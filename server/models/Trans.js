@@ -1,16 +1,12 @@
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
-  mongoose.Schema({
-      name: { type: String, required: true, unique: true}
-  });
-
 var transSchema = new Schema({
-  // referenced from my profile schema
-account: [{
+account: {
   type: mongoose.Schema.Types.ObjectId,
-  ref: 'Profile'
-}],
+  ref: 'Profile',
+  required: true
+},
 
   date: {
     type: Date,
@@ -23,10 +19,11 @@ account: [{
      required: true,
    },
 
-   p_name: [{
+   p_name: {
      type: mongoose.Schema.Types.ObjectId,
-     ref: 'Product'
-   }],
+     ref: 'Product',
+     required: true
+   },
 
    outflow: {
      type: Number,

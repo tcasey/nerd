@@ -1,10 +1,6 @@
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
-  mongoose.Schema({
-      name: { type: String, required: true, unique: true}
-  });
-
 var productSchema = new Schema({
 p_name: {
   type: String,

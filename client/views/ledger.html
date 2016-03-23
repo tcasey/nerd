@@ -4,13 +4,18 @@
 
   <section id="transactions_section">
     <div class="toolbar">
-      <span></span>
-      <span></span>
+      <!-- connect to cash/stripe in the side bar to show the different ledger views and balances -->
+      <span class="account-type">Cash</span>
+      <span>Balance</span>
+    </div>
+
+    <div class="add-modal">
+
     </div>
 
     <table class="">
       <tbody>
-        <tr>
+        <tr id="t-headers">
           <th>ACCOUNT</th>
           <th>DATE</th>
           <th>CUSTOMER</th>
@@ -18,15 +23,24 @@
           <th>OUTFLOW</th>
           <th>INFLOW</th>
         </tr>
-        <!-- Also need to set it up to order by date in this repeat -->
-        <tr ng-repeat="transaction in trans">
-          <td>{{transaction.account}}</td>
+        <tr class="input-transactions">
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+          <td><input type="text"/></td>
+        </tr>
+        <!-- Ordered by date of the creation of -->
+        <tr ng-repeat="transaction in trans | orderBy: transaction.date">
+          <td>{{transaction.account.account}}</td>
           <td>{{transaction.date| date:"MM/dd/yy"}}</td>
           <td>{{transaction.customer}}</td>
-          <td>{{transaction.p_name}}</td>
+          <td>{{transaction.p_name.p_name}}</td>
           <td>{{transaction.outflow}}</td>
           <td>{{transaction.inflow}}</td>
         </tr>
+
       </tbody>
     </table>
 

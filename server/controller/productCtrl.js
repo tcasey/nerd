@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
 module.exports = {
 
   create: function(req, res, next) {
+    console.log('creating product');
     var newProduct = new Product(req.body);
     newProduct.save(function(err, s) {
       if (err) {

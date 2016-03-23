@@ -18,10 +18,12 @@ module.exports = {
   },
 
   index: function(req, res, next) {
+    console.log('hi');
     Profile.find(function(err, s) {
       if (err) {
         res.status(500).send();
       } else {
+        console.log(s);
         res.status(200).json(s);
       }
     });

@@ -7,7 +7,6 @@ this.getTransactions = function() {
     method: 'GET',
     url: '/transactions'
   }).then(function(res) {
-    // console.log(res.data);
     return res.data;
   });
 };

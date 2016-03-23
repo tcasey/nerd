@@ -18,12 +18,13 @@ module.exports = {
   },
 
   index: function(req, res, next) {
-    Trans.find(function(err, s) {
+    // console.log('hi');
+    Trans.find().populate('account').populate('p_name').exec(function(err, s) {
       if (err) {
         res.status(500).send();
       } else {
-        console.log(s);
         res.status(200).json(s);
+        console.log(s);
       }
     });
   },

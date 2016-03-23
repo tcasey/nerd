@@ -164,7 +164,7 @@
   margin-top: 10px;
   cursor: pointer;
 }
-.btn_login:hover{
+.btn_login:hover {
   background: #22acbd;
 }
 .col_md_sign_up {
@@ -206,7 +206,7 @@ background text
   cursor: pointer;
 }
 .btn_sign_up:hover {
-background: #eb3936;
+  background: #eb3936;
 }
 .cont_forms_active_sign_up {
   z-index: 2;
@@ -337,13 +337,25 @@ background: #eb3936;
   margin: 10px;
   margin-left: 30px;
 }
-
+/*----------------------------
+        toolbar
+------------------------------*/
+.toolbar {
+  display: flex;
+  align-items: center;
+  width: width: 78vw;
+  height: 10vh;
+  background-color: rgb(142, 142, 142);
+}
+.toolbar .account-type {
+  justify-content: flex-start;
+}
 /*----------------------------
         ledger
 ------------------------------*/
+
 #ledger {
   display: flex;
-
 }
 #side_bar {
   background-color: #8fb9ff;
@@ -352,7 +364,7 @@ background: #eb3936;
   height: 100vh;
   padding: 1em;
 }
-.side_nav {
+.side_nav, .side_nav_accts {
   background-color: #f2f2f2;
   border-radius: 2px;
   height: 3em;
@@ -361,17 +373,19 @@ background: #eb3936;
   display: flex;
   flex-direction: column;
 }
-.side_nav a {
+.side_nav_accts {
+  height: 5em;
+}
+.side_nav a, .side_nav_accts a {
   text-decoration: none;
   margin: 4px;
   color: #8fb9ff;
 }
-.side_nav a:hover {
-  /*background-color: white;*/
+.side_nav a:hover, .side_nav_accts a:hover {
   color: #ef5350;
 }
 #transactions_section {
-  background-color: #ef5350;
+  background-color: #f2f2f2;
   color: white;
   align-self: flex-end;
   width: 78vw;
@@ -379,45 +393,50 @@ background: #eb3936;
   margin: 0;
   padding: 0;
 }
-/*#transactions_section td {
-  list-style: none;
-  background-color: #f2f2f2;
-  border-radius: 2px;
-}*/
-/*
-Generic Styling, for Desktops/Laptops
-*/
+#t-headers {
+  background-color: #ababab;
+  color: ;
+  text-transform: lowercase;
+}
 table {
   width: 100%;
   border-collapse: collapse;
 }
 
 /* Zebra striping */
+
 tr:nth-of-type(odd) {
-  background-color: lightGray;
+  background-color: #c8c8c8;
 }
-tr {
-  background-color: grey;
-}
-th {
+
+/*th {
   background: #f3f3f3;
   color: white;
-  font-weight: bold;
-}
+}*/
+
 td, th {
   padding: 6px;
   border: 1px solid white;
   text-align: left;
-
 }
 td {
-  color: #8fb9ff;
+  color: #4B4841;
 }
-
+.add-modal {
+  background-color: #4B4841;
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin: 1px;
+}
+.input-transactions input{
+  width: 98%;
+}
 /*----------------------------
         reports
 ------------------------------*/
-#reports{
+
+#reports {
   width: 100vw;
   height: 100vh;
   background-color: #ef5350;
