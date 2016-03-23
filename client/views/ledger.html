@@ -1,58 +1,40 @@
-<sectiond id="ledger">
+<sectiond ng-controller="ledgerCtrl" id="ledger">
 
-  <section id="side_bar">
-    <div class="side_nav">
-      <a ui-sref="home"><span>Accounts</span></a>
-      <a href="#"><span>Reports</span></a>
-    </div>
-    <div class="side_nav">
-      <a ui-sref="home"><span>$$$</span></a>
-    </div>
-  </section>
+<tc-side></tc-side>
 
   <section id="transactions_section">
-    <div class="transactions">
-      <table>
-        <thead>
-          <tr class="column_headers">
-            <th>Stripe/Paypal</th>
-            <th>Date</th>
-            <th>Customer</th>
-            <th>Product</th>
-            <th>Inflow</th>
-            <th>Outflow</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>James Fatman</td>
-            <td> 3/21</td>
-            <td>Chief Sandwich Eater</td>
-            <td>Sandwich</td>
-            <td>$8.00</td>
-            <td>$0.00</td>
-          </tr>
-          <tr>
-            <td>The Tick</td>
-            <td>1/23</td>
-            <td>Crimefighter Sorta</td>
-            <td>Crime</td>
-            <td>$0.00</td>
-            <td>$0.99</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <td>+</td>
-        </tfoot>
-      </table>
-      <div class="">
-
-      </div>
+    <div class="toolbar">
+      <span></span>
+      <span></span>
     </div>
+
+    <table class="">
+      <tbody>
+        <tr>
+          <th>ACCOUNT</th>
+          <th>DATE</th>
+          <th>CUSTOMER</th>
+          <th>PRODUCT</th>
+          <th>OUTFLOW</th>
+          <th>INFLOW</th>
+        </tr>
+        <!-- Also need to set it up to order by date in this repeat -->
+        <tr ng-repeat="transaction in trans">
+          <td>{{transaction.account}}</td>
+          <td>{{transaction.date| date:"MM/dd/yy"}}</td>
+          <td>{{transaction.customer}}</td>
+          <td>{{transaction.p_name}}</td>
+          <td>{{transaction.outflow}}</td>
+          <td>{{transaction.inflow}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
 
   </section>
 
-  <section id="">
+  <section id="footer">
 
   </section>
 

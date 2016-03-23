@@ -36,13 +36,15 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(__dirname + '../index.html'));
+app.use(express.static(__dirname + './../client'));
+
+
 
 // Facebook Passport Login
 passport.use(new FacebookStrategy({
   clientID: keys.facebook_clientd,
   clientSecret: keys.facebook_secret,
-  callbackURL: 'http://localhost:3000/auth/facebook/callback'
+  callbackURL: 'http://localhost:5000/auth/facebook/callback'
 }, function(token, refreshToken, profile, done) {
   return done(null, profile);
 }));

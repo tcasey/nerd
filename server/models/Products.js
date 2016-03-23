@@ -6,7 +6,7 @@ var Schema   = mongoose.Schema;
   });
 
 var productSchema = new Schema({
-name: {
+p_name: {
   type: String,
   unique: true,
   required: true,

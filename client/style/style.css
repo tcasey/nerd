@@ -337,18 +337,20 @@ background: #eb3936;
   margin: 10px;
   margin-left: 30px;
 }
+
+/*----------------------------
+        ledger
+------------------------------*/
 #ledger {
   display: flex;
 
 }
 #side_bar {
-  background-color: #ef5350;
-  align-self: flex-start;
-  width: 12vw;
-  height: 88vh;
-  margin: 1em;
+  background-color: #8fb9ff;
+  float: left;
+  width: 20vw;
+  height: 100vh;
   padding: 1em;
-  border-radius: 2px;
 }
 .side_nav {
   background-color: #f2f2f2;
@@ -372,11 +374,10 @@ background: #eb3936;
   background-color: #ef5350;
   color: white;
   align-self: flex-end;
-  width: 70vw;
-  height: 88vh;
-  margin: 1em;
-  padding: 1em;
-  border-radius: 2px;
+  width: 78vw;
+  height: 106vh;
+  margin: 0;
+  padding: 0;
 }
 /*#transactions_section td {
   list-style: none;
@@ -411,4 +412,13 @@ td, th {
 }
 td {
   color: #8fb9ff;
+}
+
+/*----------------------------
+        reports
+------------------------------*/
+#reports{
+  width: 100vw;
+  height: 100vh;
+  background-color: #ef5350;
 }

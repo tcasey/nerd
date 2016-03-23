@@ -6,7 +6,8 @@
   <meta name="description" content="Budgeting made easy">
   <title> Budget | Nerd | </title>
 
-  <link rel="stylesheet" href="./client/style/style.css">
+  <link rel="stylesheet" href="./style/style.css">
+  <!-- <link rel="stylesheet" href="./style/responsive-tables.css"> -->
 </head>
 
 <body ng-controller="mainCtrl">
@@ -22,12 +23,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
   <script src="//code.jquery.com/jquery-1.12.0.js"></script>
   <!--  app  -->
-  <script src="./client/app.js"></script>
+  <script src="./app.js"></script>
 
   <!--  controllers  -->
-  <script src="./client/controllers/mainCtrl.js"></script>
-  <script src="./client/controllers/loginCtrl.js"></script>
+  <script src="./controllers/mainCtrl.js"></script>
+  <script src="./controllers/loginCtrl.js"></script>
+  <script src="./controllers/ledgerCtrl.js"></script>
 
   <!--  services  -->
+  <script src="./services/ledgerService.js"></script>
+
+<!--  directives  -->
+<script src="./directives/sidebarDir.js"></script>
+
+
+<!-- <script src="./style/responsive-tables.js"></script> -->
+
 </body>
 </html>

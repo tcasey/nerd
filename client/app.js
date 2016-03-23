@@ -8,14 +8,18 @@ angular.module('nerd', ['ui.router'])
 
   .state('login',{
                   url: '/login',
-                  templateUrl: './client/views/login.html'
+                  templateUrl: './views/login.html'
   })
   .state('home', {
                   url: '/home',
-                  templateUrl: './client/views/ledger.html'
+                  templateUrl: './views/ledger.html'
+  })
+  .state('reports', {
+                  url: '/reports',
+                  templateUrl: './views/reports.html'
   })
   .state('profile',{
                   url: '/profile',
-                  templateUrl: './client/views/profile.html'
-  })
+                  templateUrl: './views/profile.html'
+  });
 });

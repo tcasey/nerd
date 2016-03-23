@@ -7,10 +7,10 @@ var Schema   = mongoose.Schema;
 
 var transSchema = new Schema({
   // referenced from my profile schema
-account: {
+account: [{
   type: mongoose.Schema.Types.ObjectId,
   ref: 'Profile'
-},
+}],
 
   date: {
     type: Date,
@@ -23,11 +23,10 @@ account: {
      required: true,
    },
 
-   product: {
-     type: String,
-     unique: false,
-     required: true,
-   },
+   p_name: [{
+     type: mongoose.Schema.Types.ObjectId,
+     ref: 'Product'
+   }],
 
    outflow: {
      type: Number,

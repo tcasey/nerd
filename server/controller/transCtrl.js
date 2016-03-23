@@ -22,6 +22,7 @@ module.exports = {
       if (err) {
         res.status(500).send();
       } else {
+        console.log(s);
         res.status(200).json(s);
       }
     });
