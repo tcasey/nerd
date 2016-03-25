@@ -1,6 +1,6 @@
 <sectiond ng-controller="ledgerCtrl" id="ledger">
 
-<tc-side></tc-side>
+  <tc-side></tc-side>
 
   <section id="transactions_section">
 
@@ -17,9 +17,8 @@
 
 
       <form>
-
-              <input type="text" class="form-control" placeholder="Search all transactions" ng-model="searchTrans">
-        </form>
+        <input type="text" class="form-control" placeholder="search" ng-model="searchTrans">
+      </form>
 
 
     </div>
@@ -27,6 +26,7 @@
     <table class="">
       <tbody>
         <tr id="t-headers">
+          <th></th>
           <th class="md-title">
             <a ui-sref="home" ng-click="sortType = 'account'; sortReverse = !sortReverse">
               ACCOUNT
@@ -71,17 +71,31 @@
           </th>
         </tr>
         <tr class="input-transactions">
-
-          <td><input type="text"ng-model="transaction.account"></td>
-          <td><input type="text"ng-model="transaction.date"></td>
-          <td><input type="text"ng-model="transaction.customer"></td>
-          <td><input type="text"ng-model="transaction.p_name"></td>
-          <td><input type="text"ng-model="transaction.outflow"></td>
-          <td><input type="text"ng-model="transaction.inflow"></td>
+          <td></td>
+          <td>
+            <input type="text" ng-model="transaction.account">
+          </td>
+          <!-- ng-options="item.name for item in trans -->
+          <td>
+            <input type="text" ng-model="transaction.date">
+          </td>
+          <td>
+            <input type="text" ng-model="transaction.customer">
+          </td>
+          <td>
+            <input type="text" ng-model="transaction.p_name">
+          </td>
+          <td>
+            <input type="text" ng-model="transaction.outflow">
+          </td>
+          <td>
+            <input type="text" ng-model="transaction.inflow">
+          </td>
 
         </tr>
-        <!-- Ordered by date of the creation of -->
+
         <tr ng-repeat="transaction in trans | orderBy:sortType:sortReverse | filter:searchTrans">
+          <td></td>
           <td class="md-body-1">{{transaction.account.account}}</td>
           <td class="md-body-1">{{transaction.date| date:"MM/dd/yy"}}</td>
           <td class="md-body-1">{{transaction.customer}}</td>

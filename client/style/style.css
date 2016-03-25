@@ -444,8 +444,76 @@ td {
 }
 
 /*----------------------------
-        ui grid
+        search bar
 ------------------------------*/
+.form-control {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 34px;
+  border: 3px solid #8fb9ff;
+  margin: 60px 0;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  border-radius: 40px;
+  text-decoration: none;
+  background: none;
+  z-index: 20;
+}
+.form-control::before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 3px;
+  position: absolute;
+  top: 40px;
+  left: 34px;
+  background: #fff;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -moz-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+.form-control:focus {
+  width: 180px;
+  -moz-transition-property: width;
+  -o-transition-property: width;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  -webkit-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  -moz-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -o-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  outline: 0;
+}
+.form-control:focus::before {
+  width: 0;
+  top: 20px;
+  left: 190px;
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -moz-transition-property: width, left;
+  -o-transition-property: width, left;
+  -webkit-transition-property: width, left;
+  transition-property: width, left;
+  -moz-transition-duration: 0.6s;
+  -o-transition-duration: 0.6s;
+  -webkit-transition-duration: 0.6s;
+  transition-duration: 0.6s;
+  -moz-transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
+  -o-transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
+  -webkit-transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
+  transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
+}
 
 /*----------------------------
         angular material
