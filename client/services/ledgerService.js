@@ -1,22 +1,23 @@
 angular.module('nerd')
   .service('ledgerService', function($q, $http) {
+
     //getting the account data for the ng-options
     this.getAccounts = function() {
       return $http({
         method: 'GET',
         url: '/profile'
       }).then(function(res) {
-          console.log(res.data[0]);
+        console.log(res.data[0]);
         return res.data;
       });
     };
-
+    //getting the products data for the ng-options
     this.getProducts = function() {
       return $http({
         method: 'GET',
         url: '/products'
       }).then(function(res) {
-          console.log(res.data[0]);
+        console.log(res.data[0]);
         return res.data;
       });
     };
@@ -49,15 +50,15 @@ angular.module('nerd')
       $http.post('/transactions', input);
     };
 
-    this.deleteTransactions = function(obj) {
-      return $http({
-        data: obj,
-        method: 'DELETE',
-        url: '/transactions'
-      }).then(function(res) {
-        return res.data;
-      });
-    };
+    // this.deleteTransactions = function(obj) {
+    //   return $http({
+    //     data: obj,
+    //     method: 'DELETE',
+    //     url: '/transactions'
+    //   }).then(function(res) {
+    //     return res.data;
+    //   });
+    // };
 
 
   });

@@ -8,8 +8,8 @@ angular.module('nerd')
     });
 
     ledgerService.getProducts().then(function(res) {
-      $scope.accounts = res;
-      console.log($scope.accounts);
+      $scope.products = res;
+      console.log($scope.products);
     });
 
   });
