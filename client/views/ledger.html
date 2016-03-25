@@ -3,6 +3,7 @@
 <tc-side></tc-side>
 
   <section id="transactions_section">
+
     <div class="toolbar">
       <!-- connect to cash/stripe in the side bar to show the different ledger views and balances -->
       <span class="account-type">Cash</span>
@@ -10,35 +11,83 @@
     </div>
 
     <div class="add-modal">
+      <md-button id="btn1" class="md-raised md-primary" ng-click="getTransactions();"> fetch </md-button>
+
+      <md-button id="btn2" class="md-raised md-primary" ng-click="postTransactions();"> submit </md-button>
+
+
+      <form>
+
+              <input type="text" class="form-control" placeholder="Search all transactions" ng-model="searchTrans">
+        </form>
+
 
     </div>
 
     <table class="">
       <tbody>
         <tr id="t-headers">
-          <th>ACCOUNT</th>
-          <th>DATE</th>
-          <th>CUSTOMER</th>
-          <th>PRODUCT</th>
-          <th>OUTFLOW</th>
-          <th>INFLOW</th>
+          <th class="md-title">
+            <a ui-sref="home" ng-click="sortType = 'account'; sortReverse = !sortReverse">
+              ACCOUNT
+              <span ng-show="sortType == 'account'" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </th>
+          <th class="md-title">
+            <a ui-sref="home" ng-click="sortType = 'date'; sortReverse = !sortReverse">
+              DATE
+              <span ng-show="sortType == 'date'" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </th>
+          <th class="md-title">
+            <a ui-sref="home" ng-click="sortType = 'customer'; sortReverse = !sortReverse">
+              CUSTOMER
+              <span ng-show="sortType == 'customer'" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </th>
+          <th class="md-title">
+            <a ui-sref="home" ng-click="sortType = 'p_name'; sortReverse = !sortReverse">
+              PRODUCT
+              <span ng-show="sortType == 'p_name'" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </th>
+          <th class="md-title">
+            <a ui-sref="home" ng-click="sortType = 'outflow'; sortReverse = !sortReverse">
+              OUTFLOW
+              <span ng-show="sortType == 'outflow'" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </th>
+          <th class="md-title">
+            <a ui-sref="home" ng-click="sortType = 'inflow'; sortReverse = !sortReverse">
+              INFLOW
+              <span ng-show="sortType == 'inflow'" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </th>
         </tr>
         <tr class="input-transactions">
-          <td><input type="text"/></td>
-          <td><input type="text"/></td>
-          <td><input type="text"/></td>
-          <td><input type="text"/></td>
-          <td><input type="text"/></td>
-          <td><input type="text"/></td>
+
+          <td><input type="text"ng-model="transaction.account"></td>
+          <td><input type="text"ng-model="transaction.date"></td>
+          <td><input type="text"ng-model="transaction.customer"></td>
+          <td><input type="text"ng-model="transaction.p_name"></td>
+          <td><input type="text"ng-model="transaction.outflow"></td>
+          <td><input type="text"ng-model="transaction.inflow"></td>
+
         </tr>
         <!-- Ordered by date of the creation of -->
-        <tr ng-repeat="transaction in trans | orderBy: transaction.date">
-          <td>{{transaction.account.account}}</td>
-          <td>{{transaction.date| date:"MM/dd/yy"}}</td>
-          <td>{{transaction.customer}}</td>
-          <td>{{transaction.p_name.p_name}}</td>
-          <td>{{transaction.outflow}}</td>
-          <td>{{transaction.inflow}}</td>
+        <tr ng-repeat="transaction in trans | orderBy:sortType:sortReverse | filter:searchTrans">
+          <td class="md-body-1">{{transaction.account.account}}</td>
+          <td class="md-body-1">{{transaction.date| date:"MM/dd/yy"}}</td>
+          <td class="md-body-1">{{transaction.customer}}</td>
+          <td class="md-body-1">{{transaction.p_name.p_name}}</td>
+          <td class="md-body-1">{{transaction.outflow}}</td>
+          <td class="md-body-1">{{transaction.inflow}}</td>
         </tr>
 
       </tbody>

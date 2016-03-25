@@ -4,6 +4,8 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "angular-material": "^1.0.6",
+    "angular-ui-grid": "^3.1.1",
     "body-parser": "^1.15.0",
     "cors": "^2.7.1",
     "express": "^4.13.4",
@@ -11,7 +13,8 @@
     "mongoose": "^4.4.8",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.0",
-    "passport-stripe": "^0.2.2"
+    "passport-stripe": "^0.2.2",
+    "satellizer": "^0.14.0"
   },
   "devDependencies": {},
   "scripts": {

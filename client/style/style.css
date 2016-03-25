@@ -381,9 +381,14 @@ background text
   margin: 4px;
   color: #8fb9ff;
 }
+.md-title a {
+  text-decoration: none;
+  color: black;
+}
 .side_nav a:hover, .side_nav_accts a:hover {
   color: #ef5350;
 }
+
 #transactions_section {
   background-color: #f2f2f2;
   color: white;
@@ -409,12 +414,11 @@ tr:nth-of-type(odd) {
   background-color: #c8c8c8;
 }
 
-/*th {
-  background: #f3f3f3;
-  color: white;
-}*/
+th {
+  padding: 6px;
+}
 
-td, th {
+td {
   padding: 6px;
   border: 1px solid white;
   text-align: left;
@@ -423,15 +427,52 @@ td {
   color: #4B4841;
 }
 .add-modal {
-  background-color: #4B4841;
-  width: 50px;
-  height: 50px;
-  float: left;
+  display: flex;
+  align-items: center;
+  /*background-color: #4B4841;*/
+
+  width: 78vw;
+  height: 45px;
   margin: 1px;
+}
+.add-modal button {
+  width: 80px;
+  height: 20px;
 }
 .input-transactions input{
   width: 98%;
 }
+
+/*----------------------------
+        ui grid
+------------------------------*/
+
+/*----------------------------
+        angular material
+------------------------------*/
+.md-button {
+  padding: 0 6px 0 6px;
+  margin: 6px 8px 6px 8px;
+  min-width: 88px;
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration:none;
+  border: none;
+  outline: none;
+}
+#input{
+  height: 50px;
+}
+.input-transactions {
+  height: 5%;
+}
+#btn1, #btn2 {
+ background-color: #8fb9ff;
+}
+.inputdemoBasicUsage .md-datepicker-button {
+  width: 36px; }
 /*----------------------------
         reports
 ------------------------------*/

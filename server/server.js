@@ -11,20 +11,10 @@ var express = require('express'),
   transCtrl = require('./controller/transCtrl'),
   keys = require('./keys');
 
-
 var nodePort = 5000;
 // Initiating express app
 var app = express();
 mongoUri = 'mongodb://localhost:27017/nerd';
-
-
-
-
-// mongoose.set('debug', true);
-// mongoose.connect('mongodb://localhost/products');
-// mongoose.connection.once('open', function() {
-//   console.log('Connected to Mongo D at', mongoStuff);
-// });
 
 // Middleware
 app.use(cors());
