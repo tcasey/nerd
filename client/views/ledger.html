@@ -73,9 +73,10 @@
         <tr class="input-transactions">
           <td></td>
           <td>
-            <input type="text" ng-model="transaction.account">
+            <select class="" ng-model="transaction.account" ng-options="account._id as account.account for account in accounts">
+            </select>
           </td>
-          <!-- ng-options="item.name for item in trans -->
+
           <td>
             <input type="text" ng-model="transaction.date">
           </td>
@@ -83,7 +84,8 @@
             <input type="text" ng-model="transaction.customer">
           </td>
           <td>
-            <input type="text" ng-model="transaction.p_name">
+            <select class="" ng-model="transaction.p_name" ng-options="p_name._id as p_name.p_name for p_name in accounts">
+            </select>
           </td>
           <td>
             <input type="text" ng-model="transaction.outflow">

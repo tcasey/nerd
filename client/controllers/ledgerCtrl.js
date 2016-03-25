@@ -1,6 +1,7 @@
 angular.module('nerd')
   .controller('ledgerCtrl', function($scope, ledgerService) {
 
+
     //  Gets transactions on page load
     ledgerService.getTransactions().then(function(res) {
       $scope.trans = res;
