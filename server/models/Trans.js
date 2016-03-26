@@ -28,13 +28,15 @@ account: {
    outflow: {
      type: Number,
      unique: false,
-     required: true,
+     required: false,
+     default: 0
    },
 
    inflow: {
      type: Number,
      unique: false,
-     required: true,
+     required: false,
+     default: 0
    }
 });
 

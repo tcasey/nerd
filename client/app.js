@@ -1,4 +1,4 @@
-angular.module('nerd', ['ui.router', 'ngMaterial'])
+angular.module('nerd', ['ui.router'])
 .config(function($urlRouterProvider, $stateProvider){
 
   $urlRouterProvider

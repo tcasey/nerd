@@ -6,20 +6,17 @@
 
     <div class="toolbar">
       <!-- connect to cash/stripe in the side bar to show the different ledger views and balances -->
-      <span class="account-type">Cash</span>
-      <span>Balance</span>
+      <!-- <span class="account-type">Cash</span>
+      <span>Balance</span> -->
+      <form class="search">
+        <input type="text" class="form-control" placeholder="search" ng-model="searchTrans">
+      </form>
     </div>
 
     <div class="add-modal">
-      <md-button id="btn1" class="md-raised md-primary" ng-click="getTransactions();"> fetch </md-button>
+      <div id="btn1" class="md-raised md-primary" ng-click="getTransactions();"><a ui-sref="home">fetch</a> </div>
 
-      <md-button id="btn2" class="md-raised md-primary" ng-click="postTransactions();"> submit </md-button>
-
-
-      <form>
-        <input type="text" class="form-control" placeholder="search" ng-model="searchTrans">
-      </form>
-
+      <button id="button" ng-click="postTransactions();"></button>
 
     </div>
 
@@ -73,7 +70,7 @@
         <tr class="input-transactions">
           <td></td>
           <td>
-            <select class="" ng-model="transaction.account" ng-options="account._id as account.account for account in accounts">
+            <select class="select" ng-model="transaction.account" ng-options="account._id as account.account for account in accounts">
             </select>
           </td>
 
@@ -84,7 +81,7 @@
             <input type="text" ng-model="transaction.customer">
           </td>
           <td>
-            <select class="" ng-model="transaction.p_name" ng-options="product._id as product.p_name for product in products">
+            <select class="select" ng-model="transaction.p_name" ng-options="product._id as product.p_name for product in products">
             </select>
           </td>
           <td>
@@ -102,8 +99,8 @@
           <td class="md-body-1">{{transaction.date| date:"MM/dd/yy"}}</td>
           <td class="md-body-1">{{transaction.customer}}</td>
           <td class="md-body-1">{{transaction.p_name.p_name}}</td>
-          <td class="md-body-1">{{transaction.outflow}}</td>
-          <td class="md-body-1">{{transaction.inflow}}</td>
+          <td class="md-body-1">${{transaction.outflow}}</td>
+          <td class="md-body-1">${{transaction.inflow}}</td>
         </tr>
 
       </tbody>

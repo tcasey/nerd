@@ -12,7 +12,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cfd8dc+0,607d8b+100,b0bec5+100 */
   background: #cfd8dc;
   /* Old browsers */
   background: -moz-linear-gradient(-45deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100%);
@@ -337,26 +336,26 @@ background text
   margin: 10px;
   margin-left: 30px;
 }
+
 /*----------------------------
         toolbar
 ------------------------------*/
+
 .toolbar {
   display: flex;
   align-items: center;
   width: width: 78vw;
-  height: 10vh;
+  height: 14vh;
   background-color: rgb(142, 142, 142);
 }
 .toolbar .account-type {
   justify-content: flex-start;
 }
+
 /*----------------------------
-        ledger
+        Side Nav
 ------------------------------*/
 
-#ledger {
-  display: flex;
-}
 #side_bar {
   background-color: #8fb9ff;
   float: left;
@@ -381,20 +380,22 @@ background text
   margin: 4px;
   color: #8fb9ff;
 }
-.md-title a {
-  text-decoration: none;
-  color: black;
-}
 .side_nav a:hover, .side_nav_accts a:hover {
   color: #ef5350;
 }
 
+/*----------------------------
+        ledger
+------------------------------*/
+
+#ledger {
+  display: flex;
+}
 #transactions_section {
   background-color: #f2f2f2;
   color: white;
-  align-self: flex-end;
   width: 78vw;
-  height: 106vh;
+  height: 100vh;
   margin: 0;
   padding: 0;
 }
@@ -413,11 +414,13 @@ table {
 tr:nth-of-type(odd) {
   background-color: #c8c8c8;
 }
-
 th {
   padding: 6px;
 }
-
+th a {
+  text-decoration: none;
+  color: #4B4841;
+}
 td {
   padding: 6px;
   border: 1px solid white;
@@ -426,30 +429,163 @@ td {
 td {
   color: #4B4841;
 }
+
+/*----------------------------
+        option selectors
+------------------------------*/
+
+.select {
+  /*width: 200px;
+  height: 30px;*/
+  border: 0px solid #ddd;
+  line-height: 30px;
+  position: relative;
+  /*margin-bottom: 40px;*/
+}
+
+.select ul {
+  display: none;
+  background: #fff;
+  border: 1px solid #ddd;
+  /*min-width: 300px;*/
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+.select ul > li {
+  font-size: 12px;
+}
+.select ul > li {
+  color: #333;
+  display: block;
+  padding: 2px 8px;
+  text-decoration: none;
+  line-height: 24px;
+}
+.select ul > li:hover {
+  background: #e4f4fa;
+  cursor: pointer;
+}
 .add-modal {
   display: flex;
   align-items: center;
-  /*background-color: #4B4841;*/
-
   width: 78vw;
   height: 45px;
   margin: 1px;
 }
-.add-modal button {
+.add-modal div {
   width: 80px;
   height: 20px;
 }
-.input-transactions input{
+
+/*--------------------------
+      Submit button
+---------------------------*/
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+/*.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -65px;
+  margin-top: -20px;
+  width: 130px;
+  height: 40px;
+  text-align: center;
+}*/
+
+button {
+  outline: none;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius: 40px;
+  background: #fff;
+  border: 2px solid #1ECD97;
+  color: #1ECD97;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
+button:hover {
+  color: white;
+  background: #1ECD97;
+}
+button:active {
+  letter-spacing: 2px;
+}
+button:after {
+  content: "";
+}
+.onclic {
+  width: 40px;
+  border-color: #bbbbbb;
+  border-width: 3px;
+  font-size: 0;
+  border-left-color: #1ECD97;
+  -webkit-animation: rotating 0.8s 0.25s linear infinite;
+  animation: rotating 0.8s 0.25s linear infinite;
+}
+.onclic:after {
+  content: "";
+}
+.onclic:hover {
+  color: #1ECD97;
+  background: white;
+}
+.validate {
+  font-size: 13px;
+  color: white;
+  background: #1ECD97;
+}
+.validate:after {
+  font-family: 'FontAwesome';
+  content: "\f00c";
+}
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.input-transactions input {
   width: 98%;
 }
 
 /*----------------------------
         search bar
 ------------------------------*/
-.form-control {
+
+@import url(https://fonts.googleapis.com/css?family=Exo+2:400,900,800,700,600,500,300,200,100);
+.search input {
   position: relative;
   display: inline-block;
-  width: 55px;
+  width: 34px;
   height: 34px;
   border: 3px solid #8fb9ff;
   margin: 60px 0;
@@ -457,10 +593,10 @@ td {
   -webkit-border-radius: 40px;
   border-radius: 40px;
   text-decoration: none;
-  background: none;
+  background: #fff;
   z-index: 20;
 }
-.form-control::before {
+.search input:before {
   content: "";
   display: inline-block;
   width: 30px;
@@ -477,7 +613,7 @@ td {
   -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
 }
-.form-control:focus {
+.search input:focus {
   width: 180px;
   -moz-transition-property: width;
   -o-transition-property: width;
@@ -493,7 +629,7 @@ td {
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   outline: 0;
 }
-.form-control:focus::before {
+.search input:focus::before {
   width: 0;
   top: 20px;
   left: 190px;
@@ -516,31 +652,10 @@ td {
 }
 
 /*----------------------------
-        angular material
+
 ------------------------------*/
-.md-button {
-  padding: 0 6px 0 6px;
-  margin: 6px 8px 6px 8px;
-  min-width: 88px;
-  border-radius: 3px;
-  font-size: 14px;
-  text-align: center;
-  text-transform: uppercase;
-  text-decoration:none;
-  border: none;
-  outline: none;
-}
-#input{
-  height: 50px;
-}
-.input-transactions {
-  height: 5%;
-}
-#btn1, #btn2 {
- background-color: #8fb9ff;
-}
-.inputdemoBasicUsage .md-datepicker-button {
-  width: 36px; }
+
+
 /*----------------------------
         reports
 ------------------------------*/

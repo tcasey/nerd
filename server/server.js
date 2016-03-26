@@ -8,8 +8,8 @@ var express = require('express'),
   StripeStrategy = require('passport-stripe'),
   profileCtrl = require('./controller/profileCtrl'),
   productCtrl = require('./controller/productCtrl'),
-  transCtrl = require('./controller/transCtrl'),
-  keys = require('./keys');
+  transCtrl = require('./controller/transCtrl');
+  // keys = require('./keys');
 
 var nodePort = 5000;
 // Initiating express app

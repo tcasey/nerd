@@ -21,7 +21,7 @@ email: {
     unique: true,
     required: true
   },
-// need to get this account in the product schema
+
    account: {
      type: String,
      required: true,
