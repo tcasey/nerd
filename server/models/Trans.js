@@ -5,7 +5,7 @@ var transSchema = new Schema({
 account: {
   type: mongoose.Schema.Types.ObjectId,
   ref: 'Profile',
-  required: true
+  required: false
 },
 
   date: {
@@ -21,8 +21,8 @@ account: {
 
    p_name: {
      type: mongoose.Schema.Types.ObjectId,
-     ref: 'Product',
-     required: true
+     ref: 'Profile',
+     required: false
    },
 
    outflow: {

@@ -33,24 +33,23 @@
           <div class="cont_img_back_">
             <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
           </div>
-          <div class="cont_form_login">
+
+          <form class="cont_form_login">
             <a href="#" onclick="hide_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
             <h2>LOGIN</h2>
-            <input type="text" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button class="btn_login" onclick="change_login()"><a href="http://localhost:5000/auth/facebook">LOGIN</a></button>
-          </div>
+            <input ng-model="user.username" type="text" placeholder="Username" />
+            <input ng-model="user.password" type="password" placeholder="Password" />
+            <button ng-click="userLogin(user)"class="btn_login" >LOGIN</button>
+          </form>
 
-          <div class="cont_form_sign_up">
+          <form class="cont_form_sign_up">
             <a href="#" onclick="hide_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
             <h2>SIGN UP</h2>
-            <input type="text" placeholder="Email" />
-            <input type="text" placeholder="User" />
-            <input type="password" placeholder="Password" />
-            <input type="password" placeholder="Confirm Password" />
-            <button class="btn_sign_up" onclick="change_sign_up()">SIGN UP</button>
-
-          </div>
+            <input ng-model="newUser.email" type="text" placeholder="Email" />
+            <input ng-model="newUser.username" type="text" placeholder="Username" />
+            <input ng-model="newUser.password" type="password" placeholder="Password" />
+            <button ng-click="createUser(newUser)"class="btn_sign_up" >SIGN UP</button>
+          </form>
 
         </div>
 

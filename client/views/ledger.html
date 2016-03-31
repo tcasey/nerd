@@ -9,14 +9,16 @@
       <!-- <span class="account-type">Cash</span>
       <span>Balance</span> -->
       <form class="search">
-        <input type="text" class="form-control" placeholder="search" ng-model="searchTrans">
+        <input type="text" class="search" ng-model="searchTrans">
       </form>
     </div>
 
     <div class="add-modal">
-      <div id="btn1" class="md-raised md-primary" ng-click="getTransactions();"><a ui-sref="home">fetch</a> </div>
-
-      <button id="button" ng-click="postTransactions();"></button>
+      <!-- <input type="text" class="" ng-model="transaction.account"> -->
+      <div id="btn4" ng-click="logoutUser();"><a ui-sref="home">logout</a></div>
+      <!-- <div id="btn3" ng-click="putAccount(transaction.account);"><a ui-sref="home">account</a></div> -->
+      <!-- ng-click to post to API and append to frontend -->
+      <div id="btn2" ng-click="postTransactions(); add(transaction); getTransactions();"><a ui-sref="home">submit</a></div>
 
     </div>
 
@@ -70,6 +72,7 @@
         <tr class="input-transactions">
           <td></td>
           <td>
+
             <select class="select" ng-model="transaction.account" ng-options="account._id as account.account for account in accounts">
             </select>
           </td>
@@ -81,7 +84,7 @@
             <input type="text" ng-model="transaction.customer">
           </td>
           <td>
-            <select class="select" ng-model="transaction.p_name" ng-options="product._id as product.p_name for product in products">
+            <select class="select" ng-model="transaction.product" ng-options="product._id as product.product for product in products">
             </select>
           </td>
           <td>
@@ -95,17 +98,56 @@
 
         <tr ng-repeat="transaction in trans | orderBy:sortType:sortReverse | filter:searchTrans">
           <td></td>
-          <td class="md-body-1">{{transaction.account.account}}</td>
-          <td class="md-body-1">{{transaction.date| date:"MM/dd/yy"}}</td>
-          <td class="md-body-1">{{transaction.customer}}</td>
-          <td class="md-body-1">{{transaction.p_name.p_name}}</td>
-          <td class="md-body-1">${{transaction.outflow}}</td>
-          <td class="md-body-1">${{transaction.inflow}}</td>
+          <td class="trans-repeat">{{transaction.account.account}}</td>
+          <td class="trans-repeat">{{transaction.date| date:"MM/dd/yy"}}</td>
+          <td class="trans-repeat">{{transaction.customer}}</td>
+          <td class="trans-repeat">{{transaction.p_name.p_name}}</td>
+          <td class="trans-repeat">${{transaction.outflow}}</td>
+          <td class="trans-repeat">${{transaction.inflow}}</td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Total:</td>
+          <td>{{trans | sumOfValue:'outflow' | currency}}</td>
+          <td>{{trans | sumOfValue:'inflow' | currency}}</td>
         </tr>
 
       </tbody>
-    </table>
 
+    </table>
+    <!-- <div class="card-holder">
+        <div class="card-wrap">
+            <div class="front">
+                <form action="">
+                    <div class="input-wrap input-wrap--short">
+                        <input type="text" placeholder="Product Name" id="name" />
+
+                    </div>
+                    <div class="input-wrap">
+                        <input type="text" id="card-num" placeholder="Product Description" />
+                    </div>
+
+
+                     <div class="input-wrap input-wrap--double">
+                        $<input type="text" placeholder="price" id="expiry-mo" />
+                    </div>
+                    <input type="submit" />
+                </form>
+            </div>
+            <div class="back">
+                <form action="">
+                    <input type="submit" value="Add to Product Shelf" />
+            </div>
+        </div>
+        <div class="success">
+            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M461.6 109.6l-54.9-43.3c-1.7-1.4-3.8-2.4-6.2-2.4-2.4 0-4.6 1-6.3 2.5L194.5 323s-78.5-75.5-80.7-77.7c-2.2-2.2-5.1-5.9-9.5-5.9s-6.4 3.1-8.7 5.4c-1.7 1.8-29.7 31.2-43.5 45.8-.8.9-1.3 1.4-2 2.1-1.2 1.7-2 3.6-2 5.7 0 2.2.8 4 2 5.7l2.8 2.6s139.3 133.8 141.6 136.1c2.3 2.3 5.1 5.2 9.2 5.2 4 0 7.3-4.3 9.2-6.2l249.1-320c1.2-1.7 2-3.6 2-5.8 0-2.5-1-4.6-2.4-6.4z"/></svg>
+        </div>
+    </div>
+  </div> -->
 
 
   </section>

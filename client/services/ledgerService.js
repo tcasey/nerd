@@ -5,9 +5,9 @@ angular.module('nerd')
     this.getAccounts = function() {
       return $http({
         method: 'GET',
-        url: '/profile'
+        url: '/user/current'
       }).then(function(res) {
-        console.log(res.data[0]);
+        console.log(res.data, 'current user logged in ');
         return res.data;
       });
     };
@@ -15,9 +15,9 @@ angular.module('nerd')
     this.getProducts = function() {
       return $http({
         method: 'GET',
-        url: '/products'
+        url: '/user/current'
       }).then(function(res) {
-        console.log(res.data[0]);
+        console.log(res.data, 'this should have the products for ng-options');
         return res.data;
       });
     };
@@ -28,10 +28,11 @@ angular.module('nerd')
         method: 'GET',
         url: '/transactions'
       }).then(function(res) {
+        console.log(res.data, 'ledgerservice get');
         return res.data;
       });
     };
-    //posting the transactions data
+    // posting the transactions data
     this.postTrans = function(trans) {
       $http.post('/transactions');
     };
@@ -42,13 +43,27 @@ angular.module('nerd')
         method: 'POST',
         url: '/transactions'
       }).then(function(res) {
+  console.log(res.data, 'posted transaction body');
         return res.data;
       });
     };
 
-    this.postTrans = function(input) {
-      $http.post('/transactions', input);
+
+    // Creating transactions through the input field
+    this.putAccount = function(profileId, obj1, obj2, obj3) {
+      return $http({
+        data: {account: [
+          {account: obj1},
+          {account: obj2},
+          {account: obj3}
+        ]},
+        method: 'PUT',
+        url: '/profile' + getAccounts
+      }).then(function(res) {
+        return res.data;
+      });
     };
+
 
     // this.deleteTransactions = function(obj) {
     //   return $http({

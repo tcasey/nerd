@@ -16,21 +16,21 @@ module.exports = {
       }
     });
   },
-
+  
   index: function(req, res, next) {
-    // console.log('hi');
+    console.log('hi');
     Trans.find().populate('account').populate('p_name').exec(function(err, s) {
       if (err) {
         res.status(500).send();
       } else {
         res.status(200).json(s);
-        console.log(s);
+        console.log(s, 'populated data after transCTRl');
       }
     });
   },
 
   show: function(req, res, next) {
-    console.log(req.params);
+    // console.log(req.params);
     Trans.findById(req.params.id, function(err, s) {
       if (err) {
         console.log(err);

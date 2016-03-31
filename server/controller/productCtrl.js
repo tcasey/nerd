@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 module.exports = {
 
   create: function(req, res, next) {
-    console.log('creating product');
+    // console.log('creating product');
     var newProduct = new Product(req.body);
     newProduct.save(function(err, s) {
       if (err) {
@@ -29,7 +29,7 @@ module.exports = {
   },
 
   show: function(req, res, next) {
-    console.log(req.params);
+    // console.log(req.params);
     Product.findById(req.params.id, function(err, s) {
       if (err) {
         console.log(err);
