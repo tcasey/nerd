@@ -8,17 +8,18 @@ module.exports = {
   create: function(req, res, next) {
     var newProfile = new Profile(req.body);
     newProfile.save(function(err, s) {
-      console.log(s, 's in profileCtrl');
       if (err) res.status(500).send();
       else res.status(200).json(s);
     });
   },
 
   index: function(req, res, next) {
-    var user = new Profile(req.body);
-    user.save(function(err, response) {
-      if (err) res.status(500).json(err);
-      else return res.status(200).json(response);
+    Profile.find().populate('account', 'name').populate('product', 'name').exec(function(err, s) {
+      if (err) {
+        res.status(500).send();
+      } else {
+        res.status(200).json(s);
+      }
     });
   },
 
@@ -31,7 +32,8 @@ module.exports = {
   },
 
   update: function(req, res, next) {
-    Profile.findByIdAndUpdate(req.query.id, req.body, {
+    console.log("params", req.params.id);
+    Profile.findByIdAndUpdate(req.params.id, req.body, {
       new: true
     }, function(err, response) {
       return err ? res.status(500).json(err) : res.status(200).json(response);
@@ -41,9 +43,9 @@ module.exports = {
 
   // b stuff for auth
   loggedIn: function(req, res, next) {
+    console.log('logged in???', req.user);
     if (req.user) {
       next();
-      console.log(req.user, 'profileCtrl if logged in');
     } else res.send({
       redirect: '/login'
     });

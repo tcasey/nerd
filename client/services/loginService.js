@@ -1,6 +1,9 @@
 angular.module("nerd").service('loginService', function($q, $http, $state) {
 
   var baseUrl = 'http://localhost:5000/';
+  
+
+
 
   // login/signup for users
   this.userLogin = function(user) {

@@ -39,7 +39,7 @@
             <h2>LOGIN</h2>
             <input ng-model="user.username" type="text" placeholder="Username" />
             <input ng-model="user.password" type="password" placeholder="Password" />
-            <button ng-click="userLogin(user)"class="btn_login" >LOGIN</button>
+            <button ng-click="userLogin(user); currentUser();"class="btn_login" >LOGIN</button>
           </form>
 
           <form class="cont_form_sign_up">

@@ -1,5 +1,13 @@
 angular.module('nerd')
-  .controller('loginCtrl', function($scope, loginService) {
+  .controller('loginCtrl', function($scope, loginService, mainService, ledgerService) {
+
+    $scope.currentUser = function() {
+      mainService.currentUser().then(function(response){
+        console.log('ctrl user', response);
+        var currentUser = response._id;
+        ledgerService.getUserId(currentUser);
+      });
+    };
 
     //make a new user
     $scope.createUser = function(newUser) {
@@ -7,7 +15,7 @@ angular.module('nerd')
     };
 
     $scope.userLogin = function(user) {
-      console.log(user, 'userstiffffff');
+      console.log('userLogin', user);
       loginService.userLogin(user);
     };
 

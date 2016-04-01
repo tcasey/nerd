@@ -453,7 +453,7 @@ td {
       Submit button
 ---------------------------*/
 
-* {
+/** {
   font-family: 'Roboto', sans-serif;
 }
 button {
@@ -482,7 +482,7 @@ button:active {
 }
 button:after {
   content: "";
-}
+}*/
 
 /*----------------------------
         search bar

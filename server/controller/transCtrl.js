@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
 module.exports = {
 
   create: function(req, res, next) {
+    console.log("some hopefully good stuff", req.body);
     var newTrans = new Trans(req.body);
     newTrans.save(function(err, s) {
       if (err) {
@@ -16,10 +17,10 @@ module.exports = {
       }
     });
   },
-  
+
   index: function(req, res, next) {
     console.log('hi');
-    Trans.find().populate('account').populate('p_name').exec(function(err, s) {
+    Trans.find().populate('account').populate('product').exec(function(err, s) {
       if (err) {
         res.status(500).send();
       } else {

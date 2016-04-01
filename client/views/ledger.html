@@ -14,11 +14,13 @@
     </div>
 
     <div class="add-modal">
-      <!-- <input type="text" class="" ng-model="transaction.account"> -->
+      <input type="text" class="" ng-model="transaction.account">
+      <input type="text" class="" ng-model="transaction.product">
       <div id="btn4" ng-click="logoutUser();"><a ui-sref="home">logout</a></div>
       <!-- <div id="btn3" ng-click="putAccount(transaction.account);"><a ui-sref="home">account</a></div> -->
       <!-- ng-click to post to API and append to frontend -->
-      <div id="btn2" ng-click="postTransactions(); add(transaction); getTransactions();"><a ui-sref="home">submit</a></div>
+      <!-- add(transaction); -->
+      <div id="btn2" ng-click="postTransactions(); getTransactions();"><a ui-sref="home">submit</a></div>
 
     </div>
 
@@ -48,9 +50,9 @@
             </a>
           </th>
           <th class="md-title">
-            <a ui-sref="home" ng-click="sortType = 'p_name'; sortReverse = !sortReverse">
+            <a ui-sref="home" ng-click="sortType = 'product'; sortReverse = !sortReverse">
               PRODUCT
-              <span ng-show="sortType == 'p_name'" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'product'" class="fa fa-caret-down"></span>
               <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
             </a>
           </th>
@@ -98,10 +100,10 @@
 
         <tr ng-repeat="transaction in trans | orderBy:sortType:sortReverse | filter:searchTrans">
           <td></td>
-          <td class="trans-repeat">{{transaction.account.account}}</td>
+          <td class="trans-repeat">{{transaction.account.name}}</td>
           <td class="trans-repeat">{{transaction.date| date:"MM/dd/yy"}}</td>
           <td class="trans-repeat">{{transaction.customer}}</td>
-          <td class="trans-repeat">{{transaction.p_name.p_name}}</td>
+          <td class="trans-repeat">{{transaction.product.name}}</td>
           <td class="trans-repeat">${{transaction.outflow}}</td>
           <td class="trans-repeat">${{transaction.inflow}}</td>
         </tr>
@@ -140,7 +142,7 @@
             </div>
             <div class="back">
                 <form action="">
-                    <input type="submit" value="Add to Product Shelf" />
+                    <input type="submit" value="Add to Product Shelf" ng-click="putAccount();"/>
             </div>
         </div>
         <div class="success">
@@ -149,7 +151,27 @@
     </div>
   </div> -->
 
+    <div  class="">
+      <div ng-repeat="name in accounts">
+        {{name.name}}
+      </div>
+      <div class="">
+        Account
+        <input type="text" ng-model="createAccount">
+        <button ng-click="postAccount(createAccount); updateProfileAct();">submit account</button>
+      </div>
+      <div ng-repeat="name in products">
+        {{name.name}}
+      </div>
+      <div class="">
+        Product
+        <input type="text" ng-model="name">
+        <input type="text" ng-model="description">
+        <input type="text" ng-model="price">
+        <button ng-click="postProduct(name, description, price); updateProfilePro();">submit product</button>
+      </div>
 
+    </div>
   </section>
 
   <section id="footer">

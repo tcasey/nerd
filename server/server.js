@@ -10,9 +10,11 @@ var express = require('express'),
   profileCtrl = require('./controller/profileCtrl'),
   productCtrl = require('./controller/productCtrl'),
   transCtrl = require('./controller/transCtrl'),
+  accountCtrl = require('./controller/accountCtrl'),
   Profile = require('./models/Profile.js'),
-  // Products = require('./models/Products.js'),
+  Products = require('./models/Products.js'),
   Trans = require('./models/Trans.js'),
+  Account = require('./models/Accounts.js'),
   keys = require('./keys');
 
 var nodePort = 5000;
@@ -109,7 +111,6 @@ passport.use('local-login', new LocalStrategy({
 //AUTH API
 app.post('/login', passport.authenticate('local-login', { failureRedirect: '/login'}), function(req, res) {
   res.status(200).send({msg: 'okay!', user: req.session.passport});
-  console.log('looking for somesort of redirect');
 });
 
 // app.get('/logout', function( req, res ) {
@@ -122,7 +123,10 @@ app.post('/login', passport.authenticate('local-login', { failureRedirect: '/log
 app.post('/signup', passport.authenticate('local-signup', { failureRedirect: '/login'}), function(req, res) {
     res.status(200).json(req.body);
 });
-
+// Account Endpoints
+app.post('/accounts', accountCtrl.create);
+app.get('/accounts', accountCtrl.index);
+app.delete('/accounts/:id', accountCtrl.delete);
 // Products Endpoints
 app.post('/products', productCtrl.create);
 app.get('/products', productCtrl.index);
@@ -140,13 +144,13 @@ app.delete('/transactions/:id', transCtrl.delete);
 // Profile Endpoints
 app.post('/profile', profileCtrl.create);
 app.get('/profile', profileCtrl.index);
-// app.get('/profile/:id', profileCtrl.show);
+app.get('/profile/:id', profileCtrl.show);
 
 app.get('/logout', profileCtrl.loggedOut);
 app.get('/user/current', profileCtrl.currentUser);
 app.put('/profile', profileCtrl.update);
 
-// app.put('/profile/:id', profileCtrl.update);
+app.put('/profile/:id', profileCtrl.update);
 app.delete('/profile/:id', profileCtrl.delete);
 
       // listening in on specified port

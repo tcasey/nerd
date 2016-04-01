@@ -3,8 +3,8 @@ var Schema   = mongoose.Schema;
 
 var transSchema = new Schema({
 account: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'Profile',
+  type: Schema.Types.ObjectId,
+  ref: 'Account',
   required: false
 },
 
@@ -19,9 +19,9 @@ account: {
      required: true,
    },
 
-   p_name: {
-     type: mongoose.Schema.Types.ObjectId,
-     ref: 'Profile',
+   product: {
+     type: Schema.Types.ObjectId,
+     ref: 'Product',
      required: false
    },
 

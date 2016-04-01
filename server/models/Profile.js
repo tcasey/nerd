@@ -6,23 +6,24 @@ var salt = bcrypt.genSaltSync(10);
 
 var profileSchema = new Schema({
 
-  username: { type: String, unique: true, required: true,},
+  username: { type: String, unique: true, required: true},
 
-  email: { type: String, unique: false, lowercase: true, required: false,},
+  email: { type: String, unique: false, lowercase: true, required: false},
 
   password: { type: String, unique: false, required: true},
 
   product: [{
-    product:{
-    p_name: {type: String,unique: true,required: false,},
-    description: {type: String,required: false},
-    price: {type: Number,required: false,min: 0}
-    }
+    type: Schema.Types.ObjectId,
+    ref: 'Product',
+    required: false
   }],
 
   account: [{
-    account: { type: String, required: false }
+    type: Schema.Types.ObjectId,
+    ref: 'Account',
+    required: false
   }]
+
 });
 
 

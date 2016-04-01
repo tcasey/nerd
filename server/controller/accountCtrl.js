@@ -1,13 +1,13 @@
 var mongoose = require('mongoose'),
     ObjectId = mongoose.Schema.ObjectId,
-    Product = require('../models/Products');
+    Account = require('../models/Accounts');
 
 
 module.exports = {
 
   create: function(req, res, next) {
-    var newProduct = new Product(req.body);
-    newProduct.save(function(err, s) {
+    var newAccount = new Account(req.body);
+    newAccount.save(function(err, s) {
       if (err) {
         console.log(err);
         res.status(500).send();
@@ -18,7 +18,7 @@ module.exports = {
   },
 
   index: function(req, res, next) {
-    Product.find(function(err, s) {
+    Account.find().populate('account', 'name').populate('product', 'name').exec(function(err, s) {
       if (err) {
         res.status(500).send();
       } else {
@@ -28,8 +28,7 @@ module.exports = {
   },
 
   show: function(req, res, next) {
-    // console.log(req.params);
-    Product.findById(req.params.id, function(err, s) {
+    Account.findById(req.params.id, function(err, s) {
       if (err) {
         console.log(err);
         res.status(500).send();
@@ -40,7 +39,7 @@ module.exports = {
   },
 
   update: function(req, res, next) {
-    Product.update({_id: req.params.id}, req.body, function(err, s) {
+    Account.update({_id: req.params.id}, req.body, function(err, s) {
       if (err) {
         res.status(200).send(err);
       } else {
@@ -50,7 +49,7 @@ module.exports = {
   },
 
   delete: function(req, res, next) {
-    Product.remove({_id: req.params.id}, function(err, s) {
+    Account.remove({_id: req.params.id}, function(err, s) {
       if (err) {
         console.log(err);
         res.status(500).send();
