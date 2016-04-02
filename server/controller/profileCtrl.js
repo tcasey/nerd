@@ -31,12 +31,46 @@ module.exports = {
     });
   },
 
+  // update: function(req, res, next) {
+  //   Profile.findByIdAndUpdate(req.params.id, req.body, {
+  //     new: true
+  //   }, function(err, response) {
+  //     return err ? res.status(500).json(err) : res.status(200).json(response);
+  //   });
+  // },
+
   update: function(req, res, next) {
-    console.log("params", req.params.id);
-    Profile.findByIdAndUpdate(req.params.id, req.body, {
-      new: true
-    }, function(err, response) {
-      return err ? res.status(500).json(err) : res.status(200).json(response);
+    Profile.findById(req.user, function(err, user) {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        user.product.push(req.body.products);
+        user.save(function(err, resp) {
+          if (err) {
+            res.status(500).send(err);
+          } else {
+            res.send(resp);
+          }
+        });
+      }
+    });
+  },
+
+  updateAct: function(req, res, next) {
+    Profile.findById(req.user, function(err, user) {
+      console.log('user from profileCtrl', user);
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        user.account.push(req.body.accounts);
+        user.save(function(err, resp) {
+          if (err) {
+            res.status(500).send(err);
+          } else {
+            res.send(resp);
+          }
+        });
+      }
     });
   },
 
@@ -56,7 +90,7 @@ module.exports = {
       console.log(req.user, 'profileCtrl current user');
     }
   },
-  loggedOut: function(req, res, next){
+  loggedOut: function(req, res, next) {
     req.logout();
     req.session.destroy();
     console.log('user logged out!');

@@ -125,6 +125,7 @@ app.post('/signup', passport.authenticate('local-signup', { failureRedirect: '/l
 });
 // Account Endpoints
 app.post('/accounts', accountCtrl.create);
+// app.post('/accounts/:id', accountCtrl.createId);
 app.get('/accounts', accountCtrl.index);
 app.delete('/accounts/:id', accountCtrl.delete);
 // Products Endpoints
@@ -149,8 +150,9 @@ app.get('/profile/:id', profileCtrl.show);
 app.get('/logout', profileCtrl.loggedOut);
 app.get('/user/current', profileCtrl.currentUser);
 app.put('/profile', profileCtrl.update);
+app.put('/profile/act', profileCtrl.updateAct);
 
-app.put('/profile/:id', profileCtrl.update);
+// app.put('/profile/:id', profileCtrl.update);
 app.delete('/profile/:id', profileCtrl.delete);
 
       // listening in on specified port

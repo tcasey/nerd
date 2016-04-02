@@ -1,7 +1,5 @@
 angular.module('nerd')
-  .controller('ledgerCtrl', function($scope, ledgerService, loginService, mainService) {
-
-
+  .controller('ledgerCtrl', function($scope, ledgerService, loginService, mainService, productService) {
 
     // $scope.currentUser = function() {
     //   ledgerService.currentUser().then(function(response){
@@ -10,18 +8,6 @@ angular.module('nerd')
     //   });
     // };
 
-
-
-
-
-    // Creates accounts in the server
-    $scope.postAccount = function(createAccount) {
-      ledgerService.postAccount(createAccount).then(function() {});
-    };
-    // Creates accounts in the server
-    $scope.postProduct = function(name, description, price) {
-      ledgerService.postProduct(name, description, price).then(function() {});
-    };
     //  Gets ACCOUNTS    on page load for ng-options
     ledgerService.getAccounts().then(function(res) {
       $scope.accounts = res;
@@ -31,26 +17,21 @@ angular.module('nerd')
     ledgerService.getProducts().then(function(res) {
       $scope.products = res;
     });
+    // Creates account in the server
+    $scope.postAccount = function(name) {
+      ledgerService.postAccount(name).then(function() {
+      });
+    };
 
 
-    // UPDATE user profile ACCOUNTS
-    $scope.updateProfileAct = function(account) {
-    ledgerService.updateProfileAct(account).then(function() {
+//   // Get LOGGEDINUSER
+//   $scope.getLoggedInUser = function() {
+//   loginService.getLoggedInUser().then(function(res) {
+//     $scope.profile = res;
+//   });
+// };
 
-    });
-  };
-    // UPDATE user profile PRODUCTS
-    $scope.updateProfilePro = function(product) {
-    ledgerService.updateProfilePro(product).then(function() {
 
-    });
-  };
-  // Get LOGGEDINUSER
-  $scope.getLoggedInUser = function() {
-  loginService.getLoggedInUser().then(function(res) {
-    $scope.profile = res;
-  });
-};
     //  Gets transactions on page load
     ledgerService.getTransactions().then(function(res) {
       $scope.trans = res;
@@ -59,7 +40,6 @@ angular.module('nerd')
     $scope.getTransactions = function() {
       ledgerService.getTransactions().then(function(res) {
         $scope.trans = res;
-        console.log('getting trans ng-click', res);
       });
     };
     // Creates transactions in the server
@@ -72,9 +52,8 @@ angular.module('nerd')
     };
 
     // Delete transaction by ID
-    $scope.deleteTransactions = function() {
-      ledgerService.deleteTransactions($scope.transaction).then(function(req) {
-
+    $scope.deleteTransaction = function(transactionId) {
+      ledgerService.deleteTransaction(transactionId).then(function() {
       });
     };
     // logging out!!
@@ -84,43 +63,42 @@ angular.module('nerd')
     };
     // search bar animation
 
-    $(function() {
-      $("#button").click(function() {
-        $("#button").addClass("onclic", 250, validate);
-      });
+    var searchField = $('.search');
+    var searchInput = $("input[type='search']");
 
-      function validate() {
-        setTimeout(function() {
-          $("#button").removeClass("onclic");
-          $("#button").addClass("validate", 450, callback);
-        }, 1250);
-      }
+    var checkSearch = function(){
+        var contents = searchInput.val();
+        if(contents.length !== 0){
+          searchField.addClass('full');
+        } else {
+          searchField.removeClass('full');
+        }
+    };
 
-      function callback() {
-        setTimeout(function() {
-          $("#button").removeClass("validate");
-        }, 1250);
-      }
+    $("input[type='search']").focus(function(){
+        searchField.addClass('isActive');
+      }).blur(function(){
+        searchField.removeClass('isActive');
+        checkSearch();
     });
-    // add product modal
 
-    $('.front input[type=submit]').click(function(e) {
-      e.preventDefault();
-      $('.card-holder').addClass('back-flip');
-    })
-
-    $('.back input[type=submit]').click(function(e) {
-      e.preventDefault();
-      $('.card-holder').removeClass('back-flip');
-      $('.card-holder').addClass('slide');
-      $('.success').addClass('success--confirm');
-      setTimeout(function() {
-        $('form').find("input[type=text], input[type=number]").val("");
-        $('.card-holder').removeClass('slide');
-        $('.success').removeClass('success--confirm');
-      }, 1500);
-    })
-
-
+    // $(function() {
+    //   $("#button").click(function() {
+    //     $("#button").addClass("onclic", 250, validate);
+    //   });
+    //
+    //   function validate() {
+    //     setTimeout(function() {
+    //       $("#button").removeClass("onclic");
+    //       $("#button").addClass("validate", 450, callback);
+    //     }, 1250);
+    //   }
+    //
+    //   function callback() {
+    //     setTimeout(function() {
+    //       $("#button").removeClass("validate");
+    //     }, 1250);
+    //   }
+    // });
 
   });

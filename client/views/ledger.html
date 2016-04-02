@@ -4,18 +4,25 @@
 
   <section id="transactions_section">
 
-    <div class="toolbar">
-      <!-- connect to cash/stripe in the side bar to show the different ledger views and balances -->
-      <!-- <span class="account-type">Cash</span>
-      <span>Balance</span> -->
-      <form class="search">
-        <input type="text" class="search" ng-model="searchTrans">
-      </form>
-    </div>
+    <!-- <div class="toolbar">
+      <div class="search">
+      <svg version="1.1" viewBox="0 0 142.358 24.582">
+        <path id="search-path" fill="none" d="M131.597,14.529c-1.487,1.487-3.542,2.407-5.811,2.407c-4.539,0-8.218-3.679-8.218-8.218s3.679-8.218,8.218-8.218c4.539,0,8.218,3.679,8.218,8.218C134.004,10.987,133.084,13.042,131.597,14.529c0,0,9.554,9.554,9.554,9.554H0"
+        />
+      </svg>
+      <label for="search" class="search-label"></label>
+      <input ng-model="searchTrans" type="search" id="search" autocomplete="off" class="input-search">
 
+
+    </div>
+    </div> -->
+    <!-- <form class="search">
+      <input type="text" class="search" ng-model="searchTrans">
+    </form> -->
     <div class="add-modal">
-      <input type="text" class="" ng-model="transaction.account">
-      <input type="text" class="" ng-model="transaction.product">
+      <!-- <input type="text" class="" ng-model="transaction.account"> -->
+      <!-- <input type="text" class="" ng-model="transaction.product"> -->
+      <div class=""><a ui-sref="home">+</a></div>
       <div id="btn4" ng-click="logoutUser();"><a ui-sref="home">logout</a></div>
       <!-- <div id="btn3" ng-click="putAccount(transaction.account);"><a ui-sref="home">account</a></div> -->
       <!-- ng-click to post to API and append to frontend -->
@@ -75,7 +82,7 @@
           <td></td>
           <td>
 
-            <select class="select" ng-model="transaction.account" ng-options="account._id as account.account for account in accounts">
+            <select class="select" ng-model="transaction.account" ng-options="account._id as account.name for account in accounts">
             </select>
           </td>
 
@@ -86,7 +93,7 @@
             <input type="text" ng-model="transaction.customer">
           </td>
           <td>
-            <select class="select" ng-model="transaction.product" ng-options="product._id as product.product for product in products">
+            <select class="select" ng-model="transaction.product" ng-options="product._id as product.name for product in products">
             </select>
           </td>
           <td>
@@ -99,7 +106,7 @@
         </tr>
 
         <tr ng-repeat="transaction in trans | orderBy:sortType:sortReverse | filter:searchTrans">
-          <td></td>
+          <td><a ui-sref="home" ng-click="deleteTransaction(transaction._id);getTransactions();">x</a></td>
           <td class="trans-repeat">{{transaction.account.name}}</td>
           <td class="trans-repeat">{{transaction.date| date:"MM/dd/yy"}}</td>
           <td class="trans-repeat">{{transaction.customer}}</td>
@@ -121,55 +128,18 @@
       </tbody>
 
     </table>
-    <!-- <div class="card-holder">
-        <div class="card-wrap">
-            <div class="front">
-                <form action="">
-                    <div class="input-wrap input-wrap--short">
-                        <input type="text" placeholder="Product Name" id="name" />
 
-                    </div>
-                    <div class="input-wrap">
-                        <input type="text" id="card-num" placeholder="Product Description" />
-                    </div>
-
-
-                     <div class="input-wrap input-wrap--double">
-                        $<input type="text" placeholder="price" id="expiry-mo" />
-                    </div>
-                    <input type="submit" />
-                </form>
-            </div>
-            <div class="back">
-                <form action="">
-                    <input type="submit" value="Add to Product Shelf" ng-click="putAccount();"/>
-            </div>
-        </div>
-        <div class="success">
-            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M461.6 109.6l-54.9-43.3c-1.7-1.4-3.8-2.4-6.2-2.4-2.4 0-4.6 1-6.3 2.5L194.5 323s-78.5-75.5-80.7-77.7c-2.2-2.2-5.1-5.9-9.5-5.9s-6.4 3.1-8.7 5.4c-1.7 1.8-29.7 31.2-43.5 45.8-.8.9-1.3 1.4-2 2.1-1.2 1.7-2 3.6-2 5.7 0 2.2.8 4 2 5.7l2.8 2.6s139.3 133.8 141.6 136.1c2.3 2.3 5.1 5.2 9.2 5.2 4 0 7.3-4.3 9.2-6.2l249.1-320c1.2-1.7 2-3.6 2-5.8 0-2.5-1-4.6-2.4-6.4z"/></svg>
-        </div>
-    </div>
-  </div> -->
-
-    <div  class="">
+    <div class="">
       <div ng-repeat="name in accounts">
         {{name.name}}
       </div>
       <div class="">
         Account
         <input type="text" ng-model="createAccount">
-        <button ng-click="postAccount(createAccount); updateProfileAct();">submit account</button>
+        <button ng-click="postAccount(createAccount);">submit account</button>
+        <!-- updateProfileAct(); -->
       </div>
-      <div ng-repeat="name in products">
-        {{name.name}}
-      </div>
-      <div class="">
-        Product
-        <input type="text" ng-model="name">
-        <input type="text" ng-model="description">
-        <input type="text" ng-model="price">
-        <button ng-click="postProduct(name, description, price); updateProfilePro();">submit product</button>
-      </div>
+
 
     </div>
   </section>

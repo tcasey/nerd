@@ -2,6 +2,10 @@
          login & signup page
 ---------------------------------------*/
 
+a {
+  text-decoration: none;
+  color: #607d8b;
+}
 * {
   margin: 0px auto;
   padding: 0px;
@@ -344,6 +348,7 @@ background text
 .toolbar {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   width: width: 78vw;
   height: 14vh;
   background-color: rgb(142, 142, 142);
@@ -366,7 +371,7 @@ background text
 .side_nav, .side_nav_accts {
   background-color: #f2f2f2;
   border-radius: 2px;
-  height: 3em;
+  height: 5em;
   padding: 8px;
   margin: 0 0 1em 0;
   display: flex;
@@ -453,113 +458,121 @@ td {
       Submit button
 ---------------------------*/
 
-/** {
-  font-family: 'Roboto', sans-serif;
-}
-button {
-  outline: none;
-  height: 40px;
-  text-align: center;
-  width: 130px;
-  border-radius: 40px;
-  background: #fff;
-  border: 2px solid #1ECD97;
-  color: #1ECD97;
-  letter-spacing: 1px;
-  text-shadow: 0;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  -webkit-transition: all 0.15s ease;
-  transition: all 0.15s ease;
-}
-button:hover {
-  color: white;
-  background: #1ECD97;
-}
-button:active {
-  letter-spacing: 2px;
-}
-button:after {
-  content: "";
-}*/
+
 
 /*----------------------------
         search bar
 ------------------------------*/
 
-@import url(https://fonts.googleapis.com/css?family=Exo+2:400,900,800,700,600,500,300,200,100);
-.search input {
-  position: relative;
-  display: inline-block;
-  width: 34px;
-  height: 34px;
-  border: 3px solid #8fb9ff;
-  margin: 60px 0;
-  -moz-border-radius: 40px;
-  -webkit-border-radius: 40px;
-  border-radius: 40px;
-  text-decoration: none;
-  background: #fff;
-  z-index: 20;
+svg {
+  position: \;
+  transform: translateX(-246px);
+  width: 300px;
+  height: auto;
+  stroke-width: 8px;
+  stroke: #8fb9ff;
+  stroke-width: 1px;
+  stroke-dashoffset: 0;
+  stroke-dasharray: 64.6 206.305;
+  transition: all 0.5s ease-in-out;
 }
-.search input:before {
-  content: "";
-  display: inline-block;
-  width: 30px;
-  height: 3px;
+.input-search {
   position: absolute;
-  top: 40px;
-  left: 34px;
-  background: #fff;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-  -moz-transform: rotate(30deg);
-  -ms-transform: rotate(30deg);
-  -webkit-transform: rotate(30deg);
-  transform: rotate(30deg);
+  width: calc(100% - 20px);
+  height: 71px;
+  top: 0;
+  right: 28px;
+  bottom: 0;
+  left: 0;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  padding: 20px;
+  margin: 15px;
+  font-size: 1.4em;
 }
-.search input:focus {
-  width: 180px;
-  -moz-transition-property: width;
-  -o-transition-property: width;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -moz-transition-duration: 0.8s;
-  -o-transition-duration: 0.8s;
-  -webkit-transition-duration: 0.8s;
-  transition-duration: 0.8s;
-  -moz-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  -o-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  outline: 0;
+.search-label {
+  position: absolute;
+  display: block;
+  width: 308px;
+  height: 108px;
+  top: 0;
+  /*left: 50%;
+  margin-left: -54px;*/
+  z-index: 100;
+  transition: 0.5s ease-in-out;
 }
-.search input:focus::before {
-  width: 0;
-  top: 20px;
-  left: 190px;
-  -moz-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -moz-transition-property: width, left;
-  -o-transition-property: width, left;
-  -webkit-transition-property: width, left;
-  transition-property: width, left;
-  -moz-transition-duration: 0.6s;
-  -o-transition-duration: 0.6s;
-  -webkit-transition-duration: 0.6s;
-  transition-duration: 0.6s;
-  -moz-transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
-  -o-transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
-  -webkit-transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
-  transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
+.isActive .search-label {
+  transform: translateX(246px);
+}
+.isActive svg {
+  stroke-dashoffset: -65;
+  stroke-dasharray: 141.305 65;
+  transform: translateX(0);
+}
+.isActive.full svg {
+  stroke-dashoffset: -65;
+  stroke-dasharray: 141.305 65;
+  transform: translateX(0);
+}
+.full .search-label {
+  transform: translateX(246px);
+}
+.full svg {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 64.6 206.305;
+  transform: translateX(0);
+}
+.search {
+  /*position: absolute;*/
+}
+/*----------------------------
+        reports
+------------------------------*/
+
+#reports {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ef5350;
 }
 
 /*----------------------------
+        products
+------------------------------*/
 
+#products {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(120, 144, 156, 0.55);
+}
+#products ul {
+  width: 200px;
+  height: 100px;
+  justify-content: center;
+  display: inline-flex;
+  ;
+  flex-direction: column;
+  border: 1px solid white;
+  margin: 3px;
+}
+#products li {
+  height: 33px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid whit
+}
+#products .delete-product {
+  margin-left: 20px;
+}
+
+/*----------------------------
+     products shelf
+------------------------------*/
+
+
+/*----------------------------
+     product input field
 ------------------------------*/
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -570,7 +583,7 @@ body {
   background: linear-gradient(to bottom right, #161925, #1F2D2B);*/
 }
 .card-holder, .success {
-  /*position: relative;*/
+  position: relative;
   height: 277px;
   width: 530px;
 }
@@ -701,14 +714,4 @@ body {
   background: #82EFBC;
   border-radius: 50%;
   fill: #161925;
-}
-
-/*----------------------------
-        reports
-------------------------------*/
-
-#reports {
-  width: 100vw;
-  height: 100vh;
-  background-color: #ef5350;
 }

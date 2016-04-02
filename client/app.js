@@ -45,6 +45,10 @@ angular.module('nerd', ['ui.router'])
                   url: '/reports',
                   templateUrl: './views/reports.html'
   })
+  .state('products', {
+                  url: '/products',
+                  templateUrl: './views/products.html'
+  })
   .state('profile',{
                   url: '/profile',
                   templateUrl: './views/profile.html'

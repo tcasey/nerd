@@ -1,30 +1,26 @@
 angular.module('nerd')
   .service('ledgerService', function($q, $http) {
-
-    this.updateProfileAct = function(profileId, account) {
+// Creates Account and updates user profile
+    this.postAccount = function(createAccount) {
       return $http({
-        data: {},
-        method: 'PUT',
-        url: '/profile/' + profileId
-      }).then(function(res) {
-        return res.data;
+        data: {name: createAccount},
+        method: 'POST',
+        url: '/accounts'
+      }).success(function(res) {
+        console.log('res from account post', res);
+        return $http({
+          method: 'PUT',
+          url: '/profile/act',
+          data: {accounts: res._id}
+        }).success(function(res){
+        });
       });
     };
 
-    this.updateProfilePro = function(profileId, product) {
-      return $http({
-        data: {},
-        method: 'PUT',
-        url: '/profile/' + profileId
-      }).then(function(res) {
-        return res.data;
-      });
-    };
-
-    this.getUserId = function(user) {
-      console.log('user', user);
-      var profileId = user;
-    };
+    // this.getUserId = function(user) {
+    //   console.log('user', user);
+    //   var profileId = user;
+    // };
 
     //getting the account data for the ng-options
     this.getAccounts = function() {
@@ -32,7 +28,6 @@ angular.module('nerd')
         method: 'GET',
         url: '/accounts'
       }).then(function(res) {
-        // console.log( 'current user logged in ', res);
         return res.data;
       });
     };
@@ -53,7 +48,6 @@ angular.module('nerd')
         method: 'GET',
         url: '/transactions'
       }).then(function(res) {
-        // console.log( 'ledgerservice get', res);
         return res.data;
       });
     };
@@ -63,18 +57,14 @@ angular.module('nerd')
     };
     // Creating transactions through the input field
     this.postTransactions = function(obj) {
-      // console.log("kljsdljksdfjklsaf", obj);
       return $http({
         data: obj,
         method: 'POST',
         url: '/transactions'
       }).then(function(res) {
-  // console.log(res.data, 'posted transaction body');
         return res.data;
       });
     };
-
-
     // Creating through the input field
     this.putAccount = function() {
       return $http({
@@ -86,35 +76,15 @@ angular.module('nerd')
       });
     };
 
-    // Creating account through the input field
-    this.postAccount = function(createAccount) {
+
+    this.deleteTransaction = function(transactionId) {
       return $http({
-        data: {name: createAccount},
-        method: 'POST',
-        url: '/accounts'
+        method: 'DELETE',
+        url: '/transactions/' + transactionId
       }).then(function(res) {
-        return res.data;
+          console.log('deletedTransaction', res);
       });
     };
-    // Creating product through the input field
-    this.postProduct = function(name, description, price) {
-      return $http({
-        data: {name: name, description: description, price: price},
-        method: 'POST',
-        url: '/products'
-      }).then(function(res) {
-        return res.data;
-      });
-    };
-    // this.deleteTransactions = function(obj) {
-    //   return $http({
-    //     data: obj,
-    //     method: 'DELETE',
-    //     url: '/transactions'
-    //   }).then(function(res) {
-    //     return res.data;
-    //   });
-    // };
 
 
   });

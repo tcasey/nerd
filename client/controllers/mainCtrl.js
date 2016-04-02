@@ -7,7 +7,7 @@ angular.module('nerd')
     //     $scope.currentUser = response._id;
     //   });
     // };
-
+    //
 
 
   });
