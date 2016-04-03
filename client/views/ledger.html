@@ -4,30 +4,20 @@
 
   <section id="transactions_section">
 
-    <!-- <div class="toolbar">
-      <div class="search">
-      <svg version="1.1" viewBox="0 0 142.358 24.582">
-        <path id="search-path" fill="none" d="M131.597,14.529c-1.487,1.487-3.542,2.407-5.811,2.407c-4.539,0-8.218-3.679-8.218-8.218s3.679-8.218,8.218-8.218c4.539,0,8.218,3.679,8.218,8.218C134.004,10.987,133.084,13.042,131.597,14.529c0,0,9.554,9.554,9.554,9.554H0"
-        />
-      </svg>
-      <label for="search" class="search-label"></label>
-      <input ng-model="searchTrans" type="search" id="search" autocomplete="off" class="input-search">
+    <div class="toolbar">
+      <div class="">
 
+        <form class="search">
+          <input type="text" class="search" ng-model="searchTrans" placeholder="search">
+        </form>
 
+      </div>
     </div>
-    </div> -->
-    <!-- <form class="search">
-      <input type="text" class="search" ng-model="searchTrans">
-    </form> -->
+
     <div class="add-modal">
-      <!-- <input type="text" class="" ng-model="transaction.account"> -->
-      <!-- <input type="text" class="" ng-model="transaction.product"> -->
-      <div class=""><a ui-sref="home">+</a></div>
+
+      <div class="add-transactions" ng-click="ShowHide()"><a ui-sref="home" style="display: inline-flex;"><i class="fa fa-plus"></i>Transaction</a></div>
       <div id="btn4" ng-click="logoutUser();"><a ui-sref="home">logout</a></div>
-      <!-- <div id="btn3" ng-click="putAccount(transaction.account);"><a ui-sref="home">account</a></div> -->
-      <!-- ng-click to post to API and append to frontend -->
-      <!-- add(transaction); -->
-      <div id="btn2" ng-click="postTransactions(); getTransactions();"><a ui-sref="home">submit</a></div>
 
     </div>
 
@@ -78,10 +68,9 @@
             </a>
           </th>
         </tr>
-        <tr class="input-transactions">
-          <td></td>
+        <tr class="input-transactions" ng-show="IsVisible">
+          <td>  <div id="btn2" ng-click="postTransactions(); getTransactions();"><a ui-sref="home"><i class="fa fa-plus"></i></a></div></td>
           <td>
-
             <select class="select" ng-model="transaction.account" ng-options="account._id as account.name for account in accounts">
             </select>
           </td>
@@ -106,13 +95,13 @@
         </tr>
 
         <tr ng-repeat="transaction in trans | orderBy:sortType:sortReverse | filter:searchTrans">
-          <td><a ui-sref="home" ng-click="deleteTransaction(transaction._id);getTransactions();">x</a></td>
+          <td class="transaction-delete"><a ui-sref="home" ng-click="deleteTransaction(transaction._id);getTransactions();">x</a></td>
           <td class="trans-repeat">{{transaction.account.name}}</td>
           <td class="trans-repeat">{{transaction.date| date:"MM/dd/yy"}}</td>
           <td class="trans-repeat">{{transaction.customer}}</td>
           <td class="trans-repeat">{{transaction.product.name}}</td>
-          <td class="trans-repeat">${{transaction.outflow}}</td>
-          <td class="trans-repeat">${{transaction.inflow}}</td>
+          <td class="trans-repeat">{{transaction.outflow | currency}}</td>
+          <td class="trans-repeat">{{transaction.inflow | currency}}</td>
         </tr>
 
         <tr>
@@ -128,18 +117,6 @@
       </tbody>
 
     </table>
-
-    <div class="">
-      <div ng-repeat="name in accounts">
-        {{name.name}}
-      </div>
-      <div class="">
-        Account
-        <input type="text" ng-model="createAccount">
-        <button ng-click="postAccount(createAccount);">submit account</button>
-        <!-- updateProfileAct(); -->
-      </div>
-
 
     </div>
   </section>

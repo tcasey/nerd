@@ -25,13 +25,13 @@ angular.module('nerd')
       });
     };
 
-    
+    $scope.IsVisible = false;
+           $scope.ShowHide = function () {
     // add product modal
     $('.front input[type=submit]').click(function(e) {
       e.preventDefault();
       $('.card-holder').addClass('back-flip');
     })
-
     $('.back input[type=submit]').click(function(e) {
       e.preventDefault();
       $('.card-holder').removeClass('back-flip');
@@ -42,7 +42,12 @@ angular.module('nerd')
         $('.card-holder').removeClass('slide');
         $('.success').removeClass('success--confirm');
       }, 1500);
-    })
+      setTimeout(function() {
+      $('.card-holder').hide();
+    }, 1600);
 
+    });
+    $scope.IsVisible = $scope.IsVisible ? false : true;
+};
 
   });

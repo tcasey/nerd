@@ -1,5 +1,6 @@
 angular.module('nerd')
   .service('ledgerService', function($q, $http) {
+
 // Creates Account and updates user profile
     this.postAccount = function(createAccount) {
       return $http({
@@ -17,11 +18,15 @@ angular.module('nerd')
       });
     };
 
-    // this.getUserId = function(user) {
-    //   console.log('user', user);
-    //   var profileId = user;
-    // };
-
+    this.getProfileAccounts = function() {
+      return $http({
+        method: 'GET',
+        url: '/accounts'
+        // data: {account: name}
+      }).then(function(res) {
+        return res.data;
+      });
+    };
     //getting the account data for the ng-options
     this.getAccounts = function() {
       return $http({
@@ -51,10 +56,7 @@ angular.module('nerd')
         return res.data;
       });
     };
-    // posting the transactions data
-    this.postTrans = function(trans) {
-      $http.post('/transactions');
-    };
+
     // Creating transactions through the input field
     this.postTransactions = function(obj) {
       return $http({
@@ -65,17 +67,6 @@ angular.module('nerd')
         return res.data;
       });
     };
-    // Creating through the input field
-    this.putAccount = function() {
-      return $http({
-        data: {},
-        method: 'PUT',
-        url: '/profile'
-      }).then(function(res) {
-        return res.data;
-      });
-    };
-
 
     this.deleteTransaction = function(transactionId) {
       return $http({
@@ -86,5 +77,9 @@ angular.module('nerd')
       });
     };
 
+    // this.getUserId = function(user) {
+    //   console.log('user', user);
+    //   var profileId = user;
+    // };
 
   });

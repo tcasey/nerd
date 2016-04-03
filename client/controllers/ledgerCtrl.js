@@ -1,17 +1,15 @@
 angular.module('nerd')
   .controller('ledgerCtrl', function($scope, ledgerService, loginService, mainService, productService) {
 
-    // $scope.currentUser = function() {
-    //   ledgerService.currentUser().then(function(response){
-    //     console.log(response._id);
-    //     $scope.currentUser = response._id;
-    //   });
-    // };
-
+    //  Gets updated userACCOUNTS on click
+    $scope.getProfileAccounts = function(res) {
+      ledgerService.getProfileAccounts().then(function(res) {
+        $scope.accounts = res;
+      });
+    };
     //  Gets ACCOUNTS    on page load for ng-options
     ledgerService.getAccounts().then(function(res) {
       $scope.accounts = res;
-      console.log("scope accounts", $scope.accounts);
     });
     //  Gets PRODUCTS    on page load for ng-options
     ledgerService.getProducts().then(function(res) {
@@ -19,19 +17,8 @@ angular.module('nerd')
     });
     // Creates account in the server
     $scope.postAccount = function(name) {
-      ledgerService.postAccount(name).then(function() {
-      });
+      ledgerService.postAccount(name).then(function() {});
     };
-
-
-//   // Get LOGGEDINUSER
-//   $scope.getLoggedInUser = function() {
-//   loginService.getLoggedInUser().then(function(res) {
-//     $scope.profile = res;
-//   });
-// };
-
-
     //  Gets transactions on page load
     ledgerService.getTransactions().then(function(res) {
       $scope.trans = res;
@@ -42,7 +29,12 @@ angular.module('nerd')
         $scope.trans = res;
       });
     };
-    // Creates transactions in the server
+    $scope.IsVisible = false;
+    $scope.ShowHide = function() {
+        //If DIV is visible it will be hidden and vice versa.
+        $scope.IsVisible = $scope.IsVisible ? false : true;
+      }
+      // Creates transactions in the server
     $scope.postTransactions = function() {
       ledgerService.postTransactions($scope.transaction).then(function(req) {
         this.add = function(transaction) {
@@ -53,8 +45,7 @@ angular.module('nerd')
 
     // Delete transaction by ID
     $scope.deleteTransaction = function(transactionId) {
-      ledgerService.deleteTransaction(transactionId).then(function() {
-      });
+      ledgerService.deleteTransaction(transactionId).then(function() {});
     };
     // logging out!!
     $scope.logoutUser = function() {
@@ -66,20 +57,20 @@ angular.module('nerd')
     var searchField = $('.search');
     var searchInput = $("input[type='search']");
 
-    var checkSearch = function(){
-        var contents = searchInput.val();
-        if(contents.length !== 0){
-          searchField.addClass('full');
-        } else {
-          searchField.removeClass('full');
-        }
+    var checkSearch = function() {
+      var contents = searchInput.val();
+      if (contents.length !== 0) {
+        searchField.addClass('full');
+      } else {
+        searchField.removeClass('full');
+      }
     };
 
-    $("input[type='search']").focus(function(){
-        searchField.addClass('isActive');
-      }).blur(function(){
-        searchField.removeClass('isActive');
-        checkSearch();
+    $("input[type='search']").focus(function() {
+      searchField.addClass('isActive');
+    }).blur(function() {
+      searchField.removeClass('isActive');
+      checkSearch();
     });
 
     // $(function() {
@@ -100,5 +91,22 @@ angular.module('nerd')
     //     }, 1250);
     //   }
     // });
+
+
+    //   // Get LOGGEDINUSER
+    //   $scope.getLoggedInUser = function() {
+    //   loginService.getLoggedInUser().then(function(res) {
+    //     $scope.profile = res;
+    //   });
+    // };
+
+    // Grabbing the user ID
+    // $scope.currentUser = function() {
+    //   ledgerService.currentUser().then(function(response){
+    //     console.log(response._id);
+    //     $scope.currentUser = response._id;
+    //   });
+    // };
+
 
   });

@@ -5,6 +5,7 @@
 a {
   text-decoration: none;
   color: #607d8b;
+  cursor: pointer;
 }
 * {
   margin: 0px auto;
@@ -157,7 +158,7 @@ a {
   color: #37474F;
 }
 .btn_login {
-  background-color: #26C6DA;
+  background-color: #607d8b;
   border: none;
   padding: 10px;
   width: 200px;
@@ -168,7 +169,7 @@ a {
   cursor: pointer;
 }
 .btn_login:hover {
-  background: #22acbd;
+  background-color: #536e7a;
 }
 .col_md_sign_up {
   position: relative;
@@ -350,8 +351,8 @@ background text
   align-items: center;
   justify-content: flex-end;
   width: width: 78vw;
-  height: 14vh;
-  background-color: rgb(142, 142, 142);
+  height: 10vh;
+  background-color: #607d8b;
 }
 .toolbar .account-type {
   justify-content: flex-start;
@@ -362,11 +363,17 @@ background text
 ------------------------------*/
 
 #side_bar {
-  background-color: #8fb9ff;
+  background-color: #748D99;
+  color: #748D99;
   float: left;
   width: 20vw;
   height: 100vh;
   padding: 1em;
+}
+#side_bar input {
+  border: none;
+  height: 1.5em;
+  border-radius: 10px;
 }
 .side_nav, .side_nav_accts {
   background-color: #f2f2f2;
@@ -378,27 +385,34 @@ background text
   flex-direction: column;
 }
 .side_nav_accts {
-  height: 5em;
+  height: auto;
   display: inherit;
+  padding: inherit;
 }
 .side_nav a, .side_nav_accts a {
   text-decoration: none;
   margin: 4px;
-  color: #8fb9ff;
+  color: #607d8b;
 }
 .side_nav a:hover, .side_nav_accts a:hover {
   color: #ef5350;
 }
-
+.account-names {
+  line-height: 20px;
+}
+.add-account {
+  margin-bottom: 15px;
+}
 /*----------------------------
         ledger
 ------------------------------*/
 
 #ledger {
   display: flex;
+  background: linear-gradient(135deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100%);
 }
 #transactions_section {
-  background-color: #f2f2f2;
+  /*background-color: #f2f2f2;*/
   color: white;
   width: 78vw;
   height: 100vh;
@@ -406,7 +420,7 @@ background text
   padding: 0;
 }
 #t-headers {
-  background-color: #ababab;
+  background-color: #607D8B;
   color: ;
   text-transform: lowercase;
 }
@@ -418,24 +432,30 @@ table {
 /* Zebra striping */
 
 tr:nth-of-type(odd) {
-  background-color: #c8c8c8;
+  background-color: #F0EDE4;
 }
 th {
   padding: 6px;
 }
 th a {
   text-decoration: none;
-  color: #4B4841;
+  color: whitesmoke;
 }
 td {
   padding: 6px;
-  border: 1px solid white;
+  border: 1px solid whitesmoke;
   text-align: left;
 }
 td {
   color: #4B4841;
 }
-
+.add-transactions {
+      /*display: inline-flex;*/
+}
+.transaction-delete {
+  display: flex;
+  justify-content: center;
+}
 /*----------------------------
         option selectors
 ------------------------------*/
@@ -445,7 +465,6 @@ td {
 .add-modal {
   display: flex;
   align-items: center;
-  width: 78vw;
   height: 45px;
   margin: 1px;
 }
@@ -464,76 +483,74 @@ td {
         search bar
 ------------------------------*/
 
-svg {
-  position: \;
-  transform: translateX(-246px);
-  width: 300px;
-  height: auto;
-  stroke-width: 8px;
-  stroke: #8fb9ff;
-  stroke-width: 1px;
-  stroke-dashoffset: 0;
-  stroke-dasharray: 64.6 206.305;
-  transition: all 0.5s ease-in-out;
+@import url(https://fonts.googleapis.com/css?family=Exo+2:400,900,800,700,600,500,300,200,100);
+.search input {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 34px;
+  /*border: 3px solid white;*/
+  margin: 60px 0;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  border-radius: 40px;
+  text-decoration: none;
+  background: #fff;
+  z-index: 20;
 }
-.input-search {
+.search input:before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 3px;
   position: absolute;
-  width: calc(100% - 20px);
-  height: 71px;
-  top: 0;
-  right: 28px;
-  bottom: 0;
-  left: 0;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  padding: 20px;
-  margin: 15px;
-  font-size: 1.4em;
+  top: 40px;
+  left: 34px;
+  background: #fff;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -moz-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
 }
-.search-label {
-  position: absolute;
-  display: block;
-  width: 308px;
-  height: 108px;
-  top: 0;
-  /*left: 50%;
-  margin-left: -54px;*/
-  z-index: 100;
-  transition: 0.5s ease-in-out;
+.search input:focus {
+  width: 180px;
+  -moz-transition-property: width;
+  -o-transition-property: width;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  -webkit-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  -moz-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -o-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  outline: 0;
 }
-.isActive .search-label {
-  transform: translateX(246px);
-}
-.isActive svg {
-  stroke-dashoffset: -65;
-  stroke-dasharray: 141.305 65;
-  transform: translateX(0);
-}
-.isActive.full svg {
-  stroke-dashoffset: -65;
-  stroke-dasharray: 141.305 65;
-  transform: translateX(0);
-}
-.full .search-label {
-  transform: translateX(246px);
-}
-.full svg {
-  stroke-dashoffset: 0;
-  stroke-dasharray: 64.6 206.305;
-  transform: translateX(0);
-}
-.search {
-  /*position: absolute;*/
-}
-/*----------------------------
-        reports
-------------------------------*/
-
-#reports {
-  width: 100vw;
-  height: 100vh;
-  background-color: #ef5350;
+.search input:focus::before {
+  width: 0;
+  top: 20px;
+  left: 190px;
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -moz-transition-property: width, left;
+  -o-transition-property: width, left;
+  -webkit-transition-property: width, left;
+  transition-property: width, left;
+  -moz-transition-duration: 0.6s;
+  -o-transition-duration: 0.6s;
+  -webkit-transition-duration: 0.6s;
+  transition-duration: 0.6s;
+  -moz-transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
+  -o-transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
+  -webkit-transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
+  transition-timing-function: cubic-bezier(1, -0.28, 0, 0.9);
 }
 
 /*----------------------------
@@ -542,8 +559,8 @@ svg {
 
 #products {
   width: 100vw;
-  height: 100vh;
-  background-color: rgba(120, 144, 156, 0.55);
+  height: 104.5vh;
+  background: linear-gradient(135deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100%);
 }
 #products ul {
   width: 200px;
@@ -574,6 +591,9 @@ svg {
 /*----------------------------
      product input field
 ------------------------------*/
+.add-product {
+  margin: 1em;
+}
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 body {
@@ -714,4 +734,14 @@ body {
   background: #82EFBC;
   border-radius: 50%;
   fill: #161925;
+}
+
+/*----------------------------
+        reports
+------------------------------*/
+
+#reports {
+  width: 100vw;
+  height: 104.5vh;
+  background: linear-gradient(135deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100%);
 }

@@ -7,10 +7,14 @@
   <div class="side_nav_accts">
     <!-- <a ui-sref="home"><span>All Accounts</span></a> -->
 
-  </br>
-    <i class="fa fa-plus"></i>Accounts
-    <div ng-repeat="name in accounts">
-      {{name.name}}
+    </br>
+    <div class="add-account" ng-click="ShowHideAct()"><a><i class="fa fa-plus"></i>Account</a></div>
+      <div class="account-names" ng-repeat="name in accounts">
+        {{name.name}}
+      </div>
+      <div class="">
+        <input type="text" ng-model="createAccount" ng-show = "IsVisibleAct">
+        <div ng-click="postAccount(createAccount); getProfileAccounts();ShowHideAct();" ng-show = "IsVisibleAct"><i class="fa fa-plus"></i></div>
+      </div>
     </div>
-</div>
 </section>

@@ -3,10 +3,6 @@ angular.module('nerd')
     return {
       restrict: 'E',
       templateUrl: 'views/sidebarDir.html',
-      scope: {
-        info: '=',
-        text: "@",
-        whatever: "@"
-      }
+      // scope: { account: name }
     };
   });

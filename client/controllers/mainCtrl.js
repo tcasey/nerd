@@ -8,6 +8,19 @@ angular.module('nerd')
     //   });
     // };
     //
-
+    $scope.IsVisibleAct = false;
+    $scope.ShowHideAct = function() {
+        $scope.IsVisibleAct = $scope.IsVisibleAct ? false : true;
+      }
+    //  Gets updated userACCOUNTS on click
+    $scope.getProfileAccounts = function(res) {
+      mainService.getProfileAccounts().then(function(res) {
+        $scope.accounts = res;
+      });
+    };
+    // Creates account in the server
+    $scope.postAccount = function(name) {
+      mainService.postAccount(name).then(function() {});
+    };
 
   });
