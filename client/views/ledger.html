@@ -17,7 +17,6 @@
     <div class="add-modal">
 
       <div class="add-transactions" ng-click="ShowHide()"><a ui-sref="home" style="display: inline-flex;"><i class="fa fa-plus"></i>Transaction</a></div>
-      <div id="btn4" ng-click="logoutUser();"><a ui-sref="home">logout</a></div>
 
     </div>
 
@@ -68,8 +67,8 @@
             </a>
           </th>
         </tr>
-        <tr class="input-transactions" ng-show="IsVisible">
-          <td>  <div id="btn2" ng-click="postTransactions(); getTransactions();"><a ui-sref="home"><i class="fa fa-plus"></i></a></div></td>
+        <tr class="input-transactions fade-in" ng-show="IsVisible">
+          <td>  <div id="btnTr" ng-click="postTransactions(); getTransactions();"><a ui-sref="home"><i class="fa fa-plus"></i></a></div></td>
           <td>
             <select class="select" ng-model="transaction.account" ng-options="account._id as account.name for account in accounts">
             </select>
@@ -95,7 +94,7 @@
         </tr>
 
         <tr ng-repeat="transaction in trans | orderBy:sortType:sortReverse | filter:searchTrans">
-          <td class="transaction-delete"><a ui-sref="home" ng-click="deleteTransaction(transaction._id);getTransactions();">x</a></td>
+          <td id="XbtnTr"class="transaction-delete"><a ui-sref="home" ng-click="deleteTransaction(transaction._id);getTransactions();"><i class="fa fa-trash-o"></i></a></td>
           <td class="trans-repeat">{{transaction.account.name}}</td>
           <td class="trans-repeat">{{transaction.date| date:"MM/dd/yy"}}</td>
           <td class="trans-repeat">{{transaction.customer}}</td>

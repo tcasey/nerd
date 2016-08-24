@@ -4,15 +4,16 @@
     <form class="search">
     </form>
   </div>
-<div class="add-product" ng-click="ShowHide()"><a ui-sref="products"><i class="fa fa-plus"></i>Product</a></div>
-  <ul class="products" ng-repeat="name in products">
+<div id="btnPr" class="add-product" ng-click="ShowHide()"><a ui-sref="products"><i class="fa fa-plus"></i>Product</a></div>
+  <ul class="products fade-in-2" ng-repeat="name in products">
     <div class="delete-product">
-      <a ui-sref="products" ng-click="deleteProduct(name._id);getNewProducts();">x</a>
-    </div>
+<a ng-click="deleteProduct(name._id);getNewProducts();">x</a>    </div>
     <li class="products-name">{{name.name}}</li>
     <li class="products-description">{{name.description}}</li>
     <li class="products-price">${{name.price}}</li>
   </ul>
+
+<section id="card-modal">
 
   <div class="card-holder" ng-show = "IsVisible">
       <div class="card-wrap">
@@ -44,5 +45,6 @@
       </div>
   </div>
   </div>
+</section>
 
 </section>

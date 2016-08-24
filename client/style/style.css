@@ -394,7 +394,7 @@ background text
   margin: 4px;
   color: #607d8b;
 }
-.side_nav a:hover, .side_nav_accts a:hover {
+.side_nav a:hover{
   color: #ef5350;
 }
 .account-names {
@@ -403,13 +403,16 @@ background text
 .add-account {
   margin-bottom: 15px;
 }
+#btnAct {
+  margin-top: 10px;
+}
 /*----------------------------
         ledger
 ------------------------------*/
 
 #ledger {
   display: flex;
-  background: linear-gradient(135deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100%);
+  /*background: linear-gradient(135deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100%);*/
 }
 #transactions_section {
   /*background-color: #f2f2f2;*/
@@ -426,6 +429,7 @@ background text
 }
 table {
   width: 100%;
+  margin: 0;
   border-collapse: collapse;
 }
 
@@ -443,7 +447,8 @@ th a {
 }
 td {
   padding: 6px;
-  border: 1px solid whitesmoke;
+  border-right: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke;
   text-align: left;
 }
 td {
@@ -455,6 +460,34 @@ td {
 .transaction-delete {
   display: flex;
   justify-content: center;
+}
+#btnTr i:hover,
+#btnPr a:hover,
+#btnAct i:hover {
+  color: #82EFBC;
+}
+#XbtnTr a:hover,
+#btn4 a:hover,
+.delete-product a:hover {
+  color: #ef5350;
+}
+#ledger select {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+font-size: 1em;
+text-align: center;
+width: 7vw;
+height: 1.5em;
+border: none;
+background-color: #F0EDE4;
+}
+#ledger td input {
+  border: none;
+  height: 1.5em;
+  font-size: 1em;
+  background-color: #F0EDE4;
+  border-radius: 6px;
 }
 /*----------------------------
         option selectors
@@ -489,7 +522,7 @@ td {
   display: inline-block;
   width: 50px;
   height: 34px;
-  /*border: 3px solid white;*/
+  border: 3px solid white;
   margin: 60px 0;
   -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
@@ -564,7 +597,7 @@ td {
 }
 #products ul {
   width: 200px;
-  height: 100px;
+  height: 125px;
   justify-content: center;
   display: inline-flex;
   ;
@@ -580,14 +613,19 @@ td {
   border: 1px solid whit
 }
 #products .delete-product {
-  margin-left: 20px;
+  margin-left: 5px;
 }
-
+#card-modal {
+  display: flex;
+  margin: 1.5em;
+}
 /*----------------------------
      products shelf
 ------------------------------*/
 
+.products li {
 
+}
 /*----------------------------
      product input field
 ------------------------------*/
@@ -721,6 +759,7 @@ body {
   justify-content: center;
   z-index: 0;
   opacity: 0;
+  /*margin-left: -90px;*/
   -webkit-transition: 600ms opacity;
   transition: 600ms opacity;
 }
@@ -731,17 +770,113 @@ body {
   height: auto;
   max-width: 150px;
   padding: 20px;
-  background: #82EFBC;
+  background: #82eebc;
   border-radius: 50%;
   fill: #161925;
+}
+#expiry-mo {
+  margin: 10px;
 }
 
 /*----------------------------
         reports
 ------------------------------*/
-
+/*
 #reports {
   width: 100vw;
   height: 104.5vh;
   background: linear-gradient(135deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100%);
+}
+/*----------------------------
+        bar chat
+------------------------------*/
+
+.center {
+  width: 300px;
+  margin: auto;
+}
+
+
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+.x.axis path {
+  display: none;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  opacity: 0;
+  /* make things invisible upon start */
+  -webkit-animation: fadeIn ease-in 1;
+  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation: fadeIn ease-in 1;
+  animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  /* this makes sure that after animation is done it remains at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.6s;
+  -moz-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+}
+.fade-in-2 {
+  opacity: 0;
+  /* make things invisible upon start */
+  -webkit-animation: fadeIn ease-in 1;
+  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation: fadeIn ease-in 1;
+  animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  /* this makes sure that after animation is done it remains at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.2s;
+  -moz-animation-duration: 0.2s;
+  animation-duration: 0.2s;
 }

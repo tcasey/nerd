@@ -14,7 +14,10 @@
       </div>
       <div class="">
         <input type="text" ng-model="createAccount" ng-show = "IsVisibleAct">
-        <div ng-click="postAccount(createAccount); getProfileAccounts();ShowHideAct();" ng-show = "IsVisibleAct"><i class="fa fa-plus"></i></div>
+        <div id="btnAct" ng-click="postAccount(createAccount); getProfileAccounts();ShowHideAct();" ng-show = "IsVisibleAct"><i class="fa fa-plus"></i></div>
       </div>
     </div>
+<div class="side_nav_accts">
+      <div id="btn4" ng-click="logoutUser();"><a>Logout</a></div>
+</div>
 </section>

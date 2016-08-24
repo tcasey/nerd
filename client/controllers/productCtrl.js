@@ -1,6 +1,14 @@
 angular.module('nerd')
   .controller('productCtrl', function($scope, loginService, mainService, ledgerService, productService) {
-
+    //get profile products on page load
+    // productService.getProfile().then(function(res) {
+    //   $scope.products = res;
+    // });
+    // logging out!!
+    $scope.logoutUser = function() {
+      console.log('sucessful logout');
+      loginService.logoutUser();
+    };
     $scope.getNewProducts = function() {
     productService.getProducts().then(function(res) {
       $scope.products = res;
@@ -10,10 +18,6 @@ angular.module('nerd')
     productService.getProducts().then(function(res) {
       $scope.products = res;
     });
-    // // Creates accounts in the server
-    // $scope.postAccount = function(createAccount) {
-    //   productService.postAccount(createAccount).then(function() {});
-    // };
     // Creates products in the server
     $scope.postProduct = function(name, description, price) {
       productService.postProduct(name, description, price).then(function() {

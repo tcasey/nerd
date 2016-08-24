@@ -33,7 +33,7 @@ angular.module('nerd')
     $scope.ShowHide = function() {
         //If DIV is visible it will be hidden and vice versa.
         $scope.IsVisible = $scope.IsVisible ? false : true;
-      }
+      };
       // Creates transactions in the server
     $scope.postTransactions = function() {
       ledgerService.postTransactions($scope.transaction).then(function(req) {

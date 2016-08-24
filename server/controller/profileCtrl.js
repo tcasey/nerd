@@ -31,14 +31,6 @@ module.exports = {
     });
   },
 
-  // update: function(req, res, next) {
-  //   Profile.findByIdAndUpdate(req.params.id, req.body, {
-  //     new: true
-  //   }, function(err, response) {
-  //     return err ? res.status(500).json(err) : res.status(200).json(response);
-  //   });
-  // },
-
   update: function(req, res, next) {
     Profile.findById(req.user, function(err, user) {
       if (err) {
